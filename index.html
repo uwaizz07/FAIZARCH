@@ -72,6 +72,11 @@
       html {
         scroll-behavior: smooth;
       }
+      /* ---------- Scroll Performance ---------- */
+      section {
+        content-visibility: auto;
+        contain-intrinsic-size: 800px;
+      }
       body {
         background: #0a0a0a;
       }
@@ -444,6 +449,8 @@
         transform-origin: left;
         transform: scaleX(0);
       }
+
+      
     </style>
   </head>
 
