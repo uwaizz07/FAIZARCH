@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FAIZ.ARCH — Abbas Residence Gallery</title>
+<meta name="description" content="FAIZ.ARCH — Abbas Residence project gallery." />
+
+<!-- ============================================================
+     FAIZ.ARCH — ABBAS RESIDENCE GALLERY PAGE
+     ------------------------------------------------------------
+     ► Photos live in the "abbas" folder. Each filename is listed
+       in one of the arrays inside the <script> at the bottom
+       (OVERVIEW_PHOTOS, HALL_PHOTOS, BEDROOM_PHOTOS, KITCHEN_PHOTOS).
+     ► This page only shows the Abbas Residence project.
+     ============================================================ -->
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0A'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-size='20' fill='%23C8A97E' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          gold: '#C8A97E', 'gold-light': '#E4D3B4', 'gold-dark': '#A98A52',
+          ink: '#0A0A0A', coal: '#101010', warm: '#A39C92', paper: '#F2EEE7',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          sans: ['Jost', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  body { background: #0A0A0A; }
+  ::selection { background: #C8A97E; color: #0A0A0A; }
+  ::-webkit-scrollbar { width: 9px; }
+  ::-webkit-scrollbar-track { background: #0A0A0A; }
+  ::-webkit-scrollbar-thumb { background: #2a2722; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #C8A97E; }
+
+  .g-card { position: relative; overflow: hidden; border-radius: 5px; }
+  .g-card img { transition: transform 1.2s cubic-bezier(.16,1,.3,1); }
+  .g-card:hover img { transform: scale(1.07); }
+  .g-card figcaption { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+  .g-card:hover figcaption { opacity: 1; transform: translateY(0); }
+
+  /* Lightbox */
+  #lightbox { opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s ease; }
+  #lightbox.open { opacity: 1; visibility: visible; }
+</style>
+</head>
+
+<body class="bg-ink font-sans text-paper antialiased">
+
+<!-- Fixed background video -->
+<div class="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
+  <video id="bgVideo" class="h-full w-full object-cover" muted loop playsinline src="Faiz%20Vedio.mp4"></video>
+  <script>setTimeout(function(){ document.getElementById('bgVideo').play(); }, 3000);</script>
+  <div class="absolute inset-0 bg-ink/75"></div>
+</div>
+
+<!-- Header -->
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-ink/70 backdrop-blur-md">
+  <div class="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-4 sm:px-10 lg:px-16">
+    <a href="index.html" class="flex items-center" aria-label="Back to FAIZ.ARCH home">
+      <img src="real%20logo.png" alt="FAIZ.ARCH logo" class="h-12 w-auto object-contain" />
+    </a>
+    <a href="index.html" class="inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.28em] text-paper/75 transition-colors hover:text-gold">
+      <svg width="16" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" class="rotate-180"><path d="M0 6h16M12 1l5 5-5 5"/></svg>
+      Back Home
+    </a>
+  </div>
+</header>
+
+<main class="relative z-10 mx-auto max-w-[1600px] px-6 pb-24 pt-32 sm:px-10 lg:px-16">
+  <!-- Title -->
+  <div class="mb-14 text-center" data-reveal>
+    <p class="mb-5 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold">
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span> Abbas Residence
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span>
+    </p>
+    <h1 class="font-serif text-[clamp(2.4rem,6vw,4.5rem)] font-light leading-tight">
+      <em class="italic text-gold-light">Abbas</em> residence
+    </h1>
+    <p class="mx-auto mt-5 max-w-md font-light leading-relaxed text-paper/55">
+      A collection of our work in progress. Click any photo to view it full screen.
+    </p>
+  </div>
+
+  <!-- Overview section -->
+  <div class="mb-10 mt-24 text-center" data-reveal>
+    <p class="mb-5 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold">
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span> Overview
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span>
+    </p>
+    <h2 class="font-serif text-[clamp(2rem,4.5vw,3.4rem)] font-light leading-tight">
+      <em class="italic text-gold-light">Project</em> overview
+    </h2>
+  </div>
+  <div id="overviewGrid" class="grid grid-cols-1 gap-8 sm:grid-cols-2"></div>
+
+  <!-- Hall section -->
+  <div class="mb-10 mt-24 text-center" data-reveal>
+    <p class="mb-5 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold">
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span> Hall
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span>
+    </p>
+    <h2 class="font-serif text-[clamp(2rem,4.5vw,3.4rem)] font-light leading-tight">
+      <em class="italic text-gold-light">Hall</em> design
+    </h2>
+  </div>
+  <div id="hallGrid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"></div>
+
+  <!-- Bedroom section -->
+  <div class="mb-10 mt-24 text-center" data-reveal>
+    <p class="mb-5 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold">
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span> Bedroom
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span>
+    </p>
+    <h2 class="font-serif text-[clamp(2rem,4.5vw,3.4rem)] font-light leading-tight">
+      <em class="italic text-gold-light">Bedroom</em> design
+    </h2>
+  </div>
+  <div id="bedroomGrid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"></div>
+
+  <!-- Kitchen section -->
+  <div class="mb-10 mt-24 text-center" data-reveal>
+    <p class="mb-5 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold">
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span> Kitchen
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span>
+    </p>
+    <h2 class="font-serif text-[clamp(2rem,4.5vw,3.4rem)] font-light leading-tight">
+      <em class="italic text-gold-light">Kitchen</em> design
+    </h2>
+  </div>
+  <div id="kitchenGrid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"></div>
+
+  <!-- Empty-state note (shown only when no photos are listed) -->
+  <div id="galleryEmpty" class="hidden py-24 text-center">
+    <p class="font-serif text-2xl font-light italic text-paper/60">Gallery is empty — add your photos</p>
+    <p class="mt-3 text-sm font-light text-paper/40">Drop image files into the <span class="text-gold">abbas</span> folder and add their names to the arrays in this file.</p>
+  </div>
+</main>
+
+<footer class="relative z-10 border-t border-white/10 py-8 text-center text-[0.66rem] uppercase tracking-[0.24em] text-paper/35">
+  © <span id="year"></span> FAIZ.ARCH Studio. All rights reserved.
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 z-[90] flex items-center justify-center bg-ink/95 p-6" aria-hidden="true">
+  <button id="lightboxClose" class="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 text-paper/75 transition-colors hover:border-gold hover:text-gold" aria-label="Close">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M1 1l14 14M15 1L1 15"/></svg>
+  </button>
+  <img id="lightboxImg" src="" alt="Gallery photo" class="max-h-[85vh] max-w-full object-contain shadow-2xl" />
+</div>
+
+<script>
+/* ============================================================
+   ► CUSTOMIZE: list the Abbas Residence photos you upload to
+     the "abbas" folder. Each entry should match the file's
+     exact name, e.g. "abbas/photo-1.jpg".
+     ============================================================ */
+var OVERVIEW_PHOTOS = [
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439118/cover.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439119/elevation.jpg"
+];
+
+var HALL_PHOTOS = [
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439121/HALL_3_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439122/HALL_5_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439119/HALL_A1_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439120/HALL_A2_result.jpg"
+];
+
+var BEDROOM_PHOTOS = [
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439120/FF_GIRLS_BED_ROOM_1_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439119/FF_GIRLS_BED_ROOM_3_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439120/FF_MASTER_BED_1_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439120/FF_MASTER_BED_2_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439120/FF_SONS_BED_ROOM_1_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439121/FF_SONS_BED_ROOM_2_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439122/GF_MASTER_BED_2_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439121/GF_PARENTS_BED_2A_result.jpg"
+];
+
+var KITCHEN_PHOTOS = [
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439119/KITCHEN_2_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786439120/KITCHEN_3_result.jpg"
+];
+
+/* Render grid + lightbox */
+(function () {
+  'use strict';
+  var overviewGrid = document.getElementById('overviewGrid');
+  var hallGrid = document.getElementById('hallGrid');
+  var bedroomGrid = document.getElementById('bedroomGrid');
+  var kitchenGrid = document.getElementById('kitchenGrid');
+  var empty = document.getElementById('galleryEmpty');
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxClose = document.getElementById('lightboxClose');
+
+  var allPhotos = OVERVIEW_PHOTOS.concat(HALL_PHOTOS, BEDROOM_PHOTOS, KITCHEN_PHOTOS);
+  if (!allPhotos.length) { empty.classList.remove('hidden'); return; }
+
+  function renderGrid(container, sources, label) {
+    sources.forEach(function (src, i) {
+      var fig = document.createElement('figure');
+      fig.className = 'g-card group';
+      fig.setAttribute('data-reveal', '');
+      fig.innerHTML =
+        '<img src="' + src + '" alt="' + label + ' photo ' + (i + 1) + '" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover">' +
+        '<div class="absolute inset-0 bg-ink/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>' +
+        '<figcaption class="absolute bottom-4 left-4 text-[0.62rem] uppercase tracking-[0.3em] text-gold-light">View photo ' + (i + 1) + '</figcaption>';
+      fig.addEventListener('click', function () {
+        lightboxImg.src = src;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+      container.appendChild(fig);
+    });
+  }
+
+  renderGrid(overviewGrid, OVERVIEW_PHOTOS, 'Overview');
+  renderGrid(hallGrid, HALL_PHOTOS, 'Hall');
+  renderGrid(bedroomGrid, BEDROOM_PHOTOS, 'Bedroom');
+  renderGrid(kitchenGrid, KITCHEN_PHOTOS, 'Kitchen');
+
+  function closeBox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  }
+  lightboxClose.addEventListener('click', closeBox);
+  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeBox(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeBox(); });
+
+  /* Simple fade-in on scroll */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.style.opacity = 1; en.target.style.transform = 'none'; io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12 });
+  var grids = [overviewGrid, hallGrid, bedroomGrid, kitchenGrid];
+  grids.forEach(function (g) {
+    g.querySelectorAll('[data-reveal]').forEach(function (el) {
+      el.style.opacity = 0; el.style.transform = 'translateY(30px)'; el.style.transition = 'opacity .9s ease, transform .9s ease';
+      io.observe(el);
+    });
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>

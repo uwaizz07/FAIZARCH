@@ -1,0 +1,2636 @@
+<!doctype html>
+<html lang="en" class="js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAIZ.ARCH — Luxury Architecture Studio</title>
+    <meta
+      name="description"
+      content="FAIZ.ARCH is a luxury architecture studio crafting timeless spaces where light, form and nature converge."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0A'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-size='20' fill='%23C8A97E' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- ============================================================
+     FAIZ.ARCH — SINGLE-FILE LUXURY ARCHITECTURE WEBSITE
+     ------------------------------------------------------------
+     ► GLOBAL BACKGROUND VIDEO
+        Runs fixed behind the entire page. File: "faiz vedio.mp4"
+        (keep it next to this HTML file, or edit the <source> below).
+     ► CUSTOMIZATION GUIDE (search for "CUSTOMIZE"):
+        1. HERO VIDEO      → replace the <source> / poster in the global
+                            background video element below
+        2. PROJECT IMAGES  → replace the <img src="..."> URLs per card
+        3. CONTACT INFO    → email, phone, address, social links
+        4. ABOUT STORY     → copy, stats and signature
+     ► Replace Tailwind Play CDN with a compiled build for production.
+     ============================================================ -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- TailwindCSS (Play CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              gold: "#C8A97E",
+              "gold-light": "#E4D3B4",
+              "gold-dark": "#A98A52",
+              ink: "#0A0A0A",
+              coal: "#101010",
+              warm: "#A39C92",
+              stone: "#8A857C",
+              paper: "#F2EEE7",
+              sand: "#D9CDBA",
+            },
+            fontFamily: {
+              serif: ['"Cormorant Garamond"', "Georgia", "serif"],
+              sans: ["Jost", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- 3D Engine, Animations, Smooth Scroll -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+
+    <style>
+      /* ---------- Base ---------- */
+      html {
+        scroll-behavior: auto;
+      }
+      body {
+        background: #0a0a0a;
+      }
+      ::selection {
+        background: #c8a97e;
+        color: #0a0a0a;
+      }
+
+      ::-webkit-scrollbar {
+        width: 9px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0a0a0a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #2a2722;
+        border-radius: 99px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #c8a97e;
+      }
+
+      /* Outlined serif for editorial moments */
+      .text-outline {
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(232, 225, 212, 0.55);
+      }
+      .gold-dot {
+        color: #c8a97e;
+      }
+
+      /* ---------- Preloader ---------- */
+      #preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: #0a0a0a;
+        color: #f2eee7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .pre-brand {
+        font-family: "Cormorant Garamond", serif;
+        text-align: center;
+      }
+      .pre-brand span {
+        display: inline-block;
+        font-size: clamp(2rem, 5.5vw, 3.6rem);
+        letter-spacing: 0.18em;
+        opacity: 0;
+        transform: translateY(34px);
+      }
+      .pre-line {
+        width: 240px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.15);
+        margin: 30px auto 0;
+        overflow: hidden;
+      }
+      .pre-line i {
+        display: block;
+        height: 100%;
+        background: linear-gradient(90deg, #c8a97e, #e4d3b4);
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+      .pre-count {
+        position: absolute;
+        right: 34px;
+        bottom: 30px;
+        font-family: Jost, sans-serif;
+        letter-spacing: 0.25em;
+        color: #a39c92;
+        font-size: 13px;
+      }
+
+      /* ---------- Header / Nav ---------- */
+      #header {
+        border-bottom: 1px solid transparent;
+        transition:
+          background 0.5s ease,
+          border-color 0.5s ease,
+          box-shadow 0.5s ease;
+      }
+      #header.scrolled {
+        background: rgba(10, 10, 10, 0.72);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+        border-bottom-color: rgba(232, 225, 212, 0.08);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+      }
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        height: 1px;
+        width: 100%;
+        background: #c8a97e;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .nav-link:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      /* ---------- Full-screen menu ---------- */
+      #menu {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        background: #0b0b0b;
+        color: #f2eee7;
+        clip-path: inset(0 0 100% 0);
+        visibility: hidden;
+        pointer-events: none;
+      }
+      #menu.open {
+        visibility: visible;
+        pointer-events: auto;
+      }
+      .menu-link {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 1rem;
+      }
+      .menu-link .idx {
+        color: #c8a97e;
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+      }
+
+      /* ---------- Custom cursor ---------- */
+      .cursor-dot,
+      .cursor-ring {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+        pointer-events: none;
+        border-radius: 999px;
+      }
+      .cursor-dot {
+        width: 6px;
+        height: 6px;
+        background: #c8a97e;
+      }
+      .cursor-ring {
+        width: 38px;
+        height: 38px;
+        border: 1px solid rgba(232, 225, 212, 0.45);
+        z-index: 9997;
+        transition:
+          width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+          height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.4s,
+          background 0.4s;
+      }
+      .cursor-ring.is-hover {
+        width: 66px;
+        height: 66px;
+        border-color: rgba(200, 169, 126, 0.9);
+        background: rgba(200, 169, 126, 0.08);
+      }
+      @media (pointer: fine) {
+        .js.has-cursor,
+        .js.has-cursor a,
+        .js.has-cursor button {
+          cursor: none;
+        }
+      }
+
+      /* ---------- Buttons ---------- */
+      .btn-gold {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        border: 1px solid rgba(200, 169, 126, 0.7);
+        color: #e4d3b4;
+        padding: 1rem 2.2rem;
+        font-size: 0.78rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        transition:
+          background 0.45s ease,
+          color 0.45s ease,
+          border-color 0.45s ease,
+          transform 0.45s ease;
+      }
+      .btn-gold:hover {
+        background: #c8a97e;
+        color: #0a0a0a;
+        border-color: #c8a97e;
+        transform: translateY(-2px);
+      }
+      .link-underline {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: #e4d3b4;
+        font-size: 0.78rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      .link-underline::after {
+        content: "";
+        height: 1px;
+        width: 100%;
+        background: currentColor;
+        opacity: 0.4;
+        transition: opacity 0.4s ease;
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+      }
+      .link-underline:hover::after {
+        opacity: 1;
+      }
+
+      /* ---------- Hero title letters ---------- */
+      .ov {
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: bottom;
+      }
+      .inl {
+        display: inline-block;
+        will-change: transform;
+      }
+
+      /* ---------- Marquee ---------- */
+      .marquee {
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .marquee-track {
+        display: inline-flex;
+        animation: marquee 30s linear infinite;
+        will-change: transform;
+      }
+      .marquee-track > div {
+        display: inline-flex;
+        align-items: center;
+        gap: 2.6rem;
+        padding-right: 2.6rem;
+      }
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ---------- Project cards ---------- */
+      .pj {
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+        display: block;
+      }
+      .pj img {
+        transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .pj:hover img {
+        transform: scale(1.08);
+      }
+      .pj .pj-cap {
+        transform: translateY(12px);
+        opacity: 0.85;
+        transition:
+          transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+          opacity 0.7s ease;
+      }
+      .pj:hover .pj-cap {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .pj .pj-veil {
+        opacity: 0.3;
+        transition: opacity 0.7s ease;
+      }
+      .pj:hover .pj-veil {
+        opacity: 0.7;
+      }
+
+      /* ---------- Services rows ---------- */
+      .svc {
+        transition:
+          background 0.5s ease,
+          padding-left 0.5s ease;
+      }
+      .svc:hover {
+        background: rgba(13, 13, 13, 0.6);
+        padding-left: 1.5rem;
+      }
+      .svc .svc-num {
+        color: #6a645b;
+        transition: color 0.5s ease;
+      }
+      .svc:hover .svc-num {
+        color: #c8a97e;
+      }
+      .svc .svc-arrow {
+        opacity: 0;
+        transform: translateX(-12px);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+      }
+      .svc:hover .svc-arrow {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* ---------- Form ---------- */
+      .field {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid rgba(232, 225, 212, 0.28);
+        padding: 14px 2px;
+        font-family: Jost, sans-serif;
+        font-size: 15px;
+        color: #f2eee7;
+        letter-spacing: 0.02em;
+        outline: none;
+        transition: border-color 0.4s ease;
+      }
+      .field::placeholder {
+        color: #8a857c;
+        font-weight: 300;
+      }
+      .field:focus {
+        border-color: #c8a97e;
+      }
+      .field option {
+        background: #16130e;
+        color: #f2eee7;
+      }
+
+      /* ---------- Misc ---------- */
+      .rule {
+        display: inline-block;
+        width: 64px;
+        height: 1px;
+        background: #c8a97e;
+        vertical-align: middle;
+      }
+      .to-top {
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
+      .to-top.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      .progress-bar {
+        transform-origin: left;
+        transform: scaleX(0);
+      }
+    </style>
+  </head>
+
+  <body class="bg-ink text-paper font-sans antialiased">
+    <!-- ============ SCROLL PROGRESS ============ -->
+    <div
+      class="progress-bar fixed top-0 left-0 z-[95] h-[2px] w-full bg-gradient-to-r from-gold-dark via-gold to-gold-light"
+    ></div>
+
+    <!-- ============ PRELOADER ============ -->
+    <div id="preloader" aria-hidden="true">
+      <div class="pre-inner">
+        <div class="pre-brand">
+          <span>F</span><span>A</span><span>I</span><span>Z</span
+          ><span class="gold-dot">.</span><span>A</span><span>R</span
+          ><span>C</span><span>H</span>
+        </div>
+        <div class="pre-line"><i></i></div>
+      </div>
+      <div class="pre-count">000</div>
+    </div>
+
+    <!-- ============ CUSTOM CURSOR ============ -->
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- ============ GLOBAL BACKGROUND VIDEO ============
+     ► CUSTOMIZE: this film plays fixed behind the ENTIRE page.
+       It currently points to "faiz vedio.mp4" (next to this file).
+       To use another film, replace the <source src> and the poster. -->
+    <div
+      class="fixed inset-0 z-0 overflow-hidden pointer-events-none"
+      aria-hidden="true"
+    >
+      <video
+        id="bgVideo"
+        class="h-full w-full object-cover"
+        muted
+        loop
+        playsinline
+      >
+        <source src="Faiz%20Vedio.mp4" type="video/mp4" />
+      </video>
+      <script>setTimeout(function(){ document.getElementById('bgVideo').play(); }, 3000);</script>
+
+      <!-- Readability overlays -->
+      <div class="absolute inset-0 bg-ink/40"></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-ink/55 via-transparent to-ink/80"
+      ></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-ink/35 via-transparent to-ink/35"
+      ></div>
+    </div>
+
+    <!-- ============ HEADER ============ -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-[70]">
+      <div
+        class="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 sm:px-10 lg:px-16"
+      >
+        <!-- Desktop links -->
+        <nav
+          class="hidden items-center gap-10 text-[0.72rem] uppercase tracking-[0.28em] text-paper/70 lg:flex"
+          aria-label="Primary"
+        >
+          <a class="nav-link transition-colors hover:text-gold" href="#studio"
+            >Studio</a
+          >
+          <a class="nav-link transition-colors hover:text-gold" href="#services"
+            >Services</a
+          >
+          <a class="nav-link transition-colors hover:text-gold" href="#projects"
+            >Projects</a
+          >
+          <a
+            class="nav-link transition-colors hover:text-gold"
+            href="#philosophy"
+            >Philosophy</a
+          >
+          <a class="nav-link transition-colors hover:text-gold" href="#contact"
+            >Contact</a
+          >
+        </nav>
+
+        <button
+          id="menuToggle"
+          class="group flex items-center gap-3 text-[0.72rem] uppercase tracking-[0.28em] text-paper/80 transition-colors hover:text-gold"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span class="hidden sm:inline">Menu</span>
+          <span class="flex flex-col gap-1.5">
+            <span
+              class="block h-px w-7 bg-current transition-all duration-300 group-hover:w-5"
+            ></span>
+            <span
+              class="block h-px w-5 bg-current transition-all duration-300 group-hover:w-7"
+            ></span>
+          </span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ============ FULL-SCREEN MENU ============ -->
+    <div id="menu" aria-hidden="true">
+      <div
+        class="flex h-full flex-col justify-between px-6 pt-28 pb-10 sm:px-10 lg:px-16"
+      >
+        <nav class="flex flex-col gap-5" aria-label="Full screen">
+          <a
+            class="menu-link group font-serif text-[clamp(2.4rem,8vw,5.5rem)] font-light text-paper/85 transition-colors hover:text-gold"
+            href="#home"
+            ><span class="idx">01</span>Home</a
+          >
+          <a
+            class="menu-link group font-serif text-[clamp(2.4rem,8vw,5.5rem)] font-light text-paper/85 transition-colors hover:text-gold"
+            href="#studio"
+            ><span class="idx">02</span>Studio</a
+          >
+          <a
+            class="menu-link group font-serif text-[clamp(2.4rem,8vw,5.5rem)] font-light text-paper/85 transition-colors hover:text-gold"
+            href="#services"
+            ><span class="idx">03</span>Services</a
+          >
+          <a
+            class="menu-link group font-serif text-[clamp(2.4rem,8vw,5.5rem)] font-light text-paper/85 transition-colors hover:text-gold"
+            href="#projects"
+            ><span class="idx">04</span>Projects</a
+          >
+          <a
+            class="menu-link group font-serif text-[clamp(2.4rem,8vw,5.5rem)] font-light text-paper/85 transition-colors hover:text-gold"
+            href="#philosophy"
+            ><span class="idx">05</span>Philosophy</a
+          >
+          <a
+            class="menu-link group font-serif text-[clamp(2.4rem,8vw,5.5rem)] font-light text-paper/85 transition-colors hover:text-gold"
+            href="#contact"
+            ><span class="idx">06</span>Contact</a
+          >
+        </nav>
+        <div
+          class="flex flex-col gap-2 border-t border-white/10 pt-8 text-sm tracking-wider text-paper/50 sm:flex-row sm:justify-between"
+        >
+          <a href="mailto:faizarchcreations@gmail.com" class="hover:text-gold"
+                                >faizarchcreations@gmail.com</a
+          >
+          <span>Dubai Design District · Dubai, UAE</span>
+        </div>
+      </div>
+    </div>
+
+    <main class="relative z-10">
+      <!-- ============ HERO ============ -->
+      <section
+        id="home"
+        class="relative h-[100svh] min-h-[640px] overflow-hidden text-paper"
+      >
+          <!-- Stats -->
+          <div
+            class="hero-stats absolute top-1/2 right-4 z-20 hidden -translate-y-1/2 sm:right-8 lg:block lg:right-12"
+            aria-label="Studio statistics"
+          >
+            <div class="flex flex-col items-end gap-10 border-r border-gold/40 pr-5 lg:pr-7">
+              <div class="text-right">
+                <p class="font-serif text-[clamp(3.6rem,5vw,6rem)] font-light leading-none text-paper">
+                  <span data-count="70">0</span><span class="gold-dot">+</span>
+                </p>
+                <p class="mt-2 text-[0.85rem] uppercase tracking-[0.28em] text-paper/50">
+                  Projects
+                </p>
+              </div>
+              <div class="text-right">
+                <p class="font-serif text-[clamp(3.6rem,5vw,6rem)] font-light leading-none text-paper">
+                  <span data-count="40">0</span><span class="gold-dot">+</span>
+                </p>
+                <p class="mt-2 text-[0.85rem] uppercase tracking-[0.28em] text-paper/50">
+                  Clients
+                </p>
+              </div>
+              <div class="text-right">
+                <p class="font-serif text-[clamp(3.6rem,5vw,6rem)] font-light leading-none text-paper">
+                  <span data-count="5">0</span><span class="gold-dot">+</span>
+                </p>
+                <p class="mt-2 text-[0.85rem] uppercase tracking-[0.28em] text-paper/50">
+                  Years of Experience
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero content -->
+          <div
+            class="relative z-20 flex h-full flex-col justify-center px-6 sm:px-10 lg:px-20"
+          >
+          <img
+            src="real%20logo.png"
+            alt="FAIZ.ARCH logo"
+            class="h-[120px] w-auto object-contain mt-0 mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]"
+          />
+          <h1
+            class="font-serif font-medium leading-[0.95] tracking-tight text-[clamp(3.4rem,13vw,10rem)]"
+          >
+            <span class="whitespace-nowrap">
+              <span class="ov"><span class="inl l">F</span></span
+              ><span class="ov"><span class="inl l">A</span></span
+              ><span class="ov"><span class="inl l">I</span></span
+              ><span class="ov"><span class="inl l">Z</span></span
+              ><span class="gold-dot">.</span>&nbsp;<span class="ov"><span class="inl l text-outline">A</span></span
+              ><span class="ov"><span class="inl l text-outline">R</span></span
+              ><span class="ov"><span class="inl l text-outline">C</span></span
+              ><span class="ov"><span class="inl l text-outline">H</span></span>
+            </span>
+          </h1>
+
+          <p
+            class="hero-tagline mt-10 max-w-md font-light leading-relaxed text-paper/80 sm:max-w-lg sm:text-lg"
+          >
+            We design timeless spaces where light, form and nature converge —
+            architecture that speaks in silence and endures beyond trends.
+          </p>
+
+          <div class="hero-ctas mt-12 flex flex-wrap items-center gap-6">
+            <a href="#projects" class="btn-gold" data-hover>
+              Explore Projects
+              <svg
+                width="18"
+                height="12"
+                viewBox="0 0 18 12"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M0 6h16M12 1l5 5-5 5" />
+              </svg>
+            </a>
+            <a href="#contact" class="link-underline" data-hover
+              >Start a Project</a
+            >
+          </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div
+          class="hero-scroll absolute bottom-8 left-1/2 z-20 -translate-x-1/2 flex flex-col items-center gap-3"
+        >
+          <span class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            >Scroll</span
+          >
+          <span class="relative block h-14 w-px overflow-hidden bg-paper/20">
+            <span
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+            ></span>
+          </span>
+        </div>
+      </section>
+
+      <!-- ============ MARQUEE (dark) ============ -->
+      <div class="marquee border-y border-white/10 py-6 text-paper/60">
+        <div class="marquee-track font-serif text-xl italic sm:text-2xl">
+          <div>
+            Architecture<span class="gold-dot not-italic">✦</span>Interiors<span
+              class="gold-dot not-italic"
+              >✦</span
+            >3D Visualization<span class="gold-dot not-italic">✦</span>Urban
+            Planning<span class="gold-dot not-italic">✦</span>Sustainable
+            Design<span class="gold-dot not-italic">✦</span>
+          </div>
+          <div>
+            Architecture<span class="gold-dot not-italic">✦</span>Interiors<span
+              class="gold-dot not-italic"
+              >✦</span
+            >3D Visualization<span class="gold-dot not-italic">✦</span>Urban
+            Planning<span class="gold-dot not-italic">✦</span>Sustainable
+            Design<span class="gold-dot not-italic">✦</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ABOUT / STUDIO ============ -->
+      <section id="studio" class="text-paper">
+        <div
+          class="mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-36"
+        >
+          <div class="grid gap-16 lg:grid-cols-12 lg:gap-10">
+            <!-- Story -->
+            <div class="lg:col-span-5" data-reveal>
+              <p
+                class="mb-6 flex items-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold"
+              >
+                <span class="rule"></span> The Studio
+              </p>
+              <h2
+                class="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] font-light leading-[1.08]"
+              >
+                Architecture shaped by light,<br class="hidden sm:block" />
+                <em class="italic text-gold-light">restraint</em> and intent.
+              </h2>
+              <p class="mt-8 max-w-md font-light leading-relaxed text-paper/75">
+                FAIZ.ARCH is a modern architecture practice devoted to
+                minimalism, sustainability and timeless design. Every commission
+                is treated as a singular composition — a dialogue between site,
+                material and the human rituals that will unfold within it.
+              </p>
+              <p class="mt-6 max-w-md font-light leading-relaxed text-paper/75">
+                From private residences to cultural landmarks, we pursue clarity
+                over ornament and longevity over spectacle — spaces that grow
+                more beautiful with age.
+              </p>
+              <p class="mt-10 font-serif text-2xl italic text-paper/70">
+                Mohammed Faiz. A
+              </p>
+              <p
+                class="mt-1 text-[0.68rem] uppercase tracking-[0.3em] text-paper/45"
+              >
+                Principal Architect
+              </p>
+            </div>
+
+            <!-- Image + floating card -->
+            <div class="lg:col-span-7">
+              <div class="relative" data-reveal>
+                <!-- ► CUSTOMIZE: about images + gallery links.
+               Replace the image files below with your own; clicking them
+               opens the gallery page (gallery.html). -->
+                <div class="relative">
+                  <div class="mb-4 flex items-center justify-between">
+                    <p
+                      class="flex items-center gap-4 font-serif text-[1.15rem] italic tracking-[0.1em] text-gold"
+                    >
+                      <span class="rule"></span> On Going Project
+                    </p>
+                    <a
+                      href="gallery.html"
+                      class="inline-flex items-center gap-3 border border-gold/50 bg-transparent px-6 py-2 text-[0.65rem] uppercase tracking-[0.28em] text-gold transition-all duration-500 hover:bg-gold hover:text-ink"
+                      data-hover
+                    >
+                      Take a Look
+                      <svg width="14" height="10" viewBox="0 0 18 12" fill="none" stroke="currentColor">
+                        <path d="M0 6h16M12 1l5 5-5 5" />
+                      </svg>
+                    </a>
+                  </div>
+                  <a
+                    href="gallery.html"
+                    class="group relative block overflow-hidden rounded-[5px]"
+                    aria-label="Open project gallery"
+                    data-hover
+                  >
+                    <img
+                      src="https://res.cloudinary.com/ugxpywav/image/upload/v1786440886/KTK_EV_RE-MODERND_FDS.jpg"
+                      alt="KTK project — residential design"
+                      class="aspect-[4/3] w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                      decoding="async"
+                    />
+                    <div
+                      class="absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    >
+                      <span
+                        class="mb-6 ml-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
+                      >
+                        Open Gallery
+                        <svg
+                          width="18"
+                          height="12"
+                          viewBox="0 0 18 12"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <path d="M0 6h16M12 1l5 5-5 5" />
+                        </svg>
+                      </span>
+                    </div>
+                  </a>
+                  <div
+                    class="absolute -bottom-8 left-6 hidden border border-gold/30 bg-ink/85 px-8 py-6 text-paper shadow-2xl backdrop-blur-md sm:block"
+                  >
+                    <p
+                      class="font-serif text-5xl font-light gold-dot"
+                      data-count="70"
+                    >
+                      0
+                    </p>
+                    <p
+                      class="mt-1 text-[0.66rem] uppercase tracking-[0.28em] text-paper/60"
+                    >
+                      Projects delivered
+                    </p>
+                  </div>
+                  </div>
+                </div>
+
+                <!-- ► Abbas project cover -->
+                <div class="relative mt-20">
+                  <div class="mb-4 flex items-center justify-between">
+                    <p
+                      class="flex items-center gap-4 font-serif text-[1.15rem] italic tracking-[0.1em] text-gold"
+                    >
+                      <span class="rule"></span> On Going Project
+                    </p>
+                    <a
+                      href="gallery-abbas.html"
+                      class="inline-flex items-center gap-3 border border-gold/50 bg-transparent px-6 py-2 text-[0.65rem] uppercase tracking-[0.28em] text-gold transition-all duration-500 hover:bg-gold hover:text-ink"
+                      data-hover
+                    >
+                      Take a Look
+                      <svg width="14" height="10" viewBox="0 0 18 12" fill="none" stroke="currentColor">
+                        <path d="M0 6h16M12 1l5 5-5 5" />
+                      </svg>
+                    </a>
+                  </div>
+                  <a
+                    href="gallery-abbas.html"
+                    class="group relative block overflow-hidden rounded-[5px]"
+                    aria-label="Open Abbas project gallery"
+                    data-hover
+                  >
+                    <img
+                      src="https://res.cloudinary.com/ugxpywav/image/upload/v1786439118/cover.jpg"
+                      alt="Abbas project — residential design"
+                      class="aspect-[4/3] w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                      decoding="async"
+                    />
+                    <div
+                      class="absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    >
+                      <span
+                        class="mb-6 ml-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
+                      >
+                        Open Gallery
+                        <svg
+                          width="18"
+                          height="12"
+                          viewBox="0 0 18 12"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <path d="M0 6h16M12 1l5 5-5 5" />
+                        </svg>
+                      </span>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- ► On Going Project cover -->
+                <div class="relative mt-20">
+                  <div class="mb-4 flex items-center justify-between">
+                    <p
+                      class="flex items-center gap-4 font-serif text-[1.15rem] italic tracking-[0.1em] text-gold"
+                    >
+                      <span class="rule"></span> On Going Project
+                    </p>
+                    <a
+                      href="gallery-ongoing.html"
+                      class="inline-flex items-center gap-3 border border-gold/50 bg-transparent px-6 py-2 text-[0.65rem] uppercase tracking-[0.28em] text-gold transition-all duration-500 hover:bg-gold hover:text-ink"
+                      data-hover
+                    >
+                      Take a Look
+                      <svg width="14" height="10" viewBox="0 0 18 12" fill="none" stroke="currentColor">
+                        <path d="M0 6h16M12 1l5 5-5 5" />
+                      </svg>
+                    </a>
+                  </div>
+                  <a
+                    href="gallery-ongoing.html"
+                    class="group relative block overflow-hidden rounded-[5px]"
+                    aria-label="Open On Going Project gallery"
+                    data-hover
+                  >
+                    <img
+                      src="https://res.cloudinary.com/ugxpywav/image/upload/v1787717581/B5_result.jpg"
+                      alt="On Going Project"
+                      class="aspect-[4/3] w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                      decoding="async"
+                    />
+                    <div
+                      class="absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    >
+                      <span
+                        class="mb-6 ml-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
+                      >
+                        Open Gallery
+                        <svg
+                          width="18"
+                          height="12"
+                          viewBox="0 0 18 12"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <path d="M0 6h16M12 1l5 5-5 5" />
+                        </svg>
+                      </span>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- ► Our Cafe Project -->
+                <div class="relative mt-28 mb-4" data-reveal>
+                  <div class="flex items-center justify-between">
+                    <h2
+                      class="font-serif text-[clamp(2rem,5vw,3.8rem)] font-light leading-tight tracking-wide"
+                    >
+                      Our <em class="italic text-gold-light">Cafe</em> Project
+                    </h2>
+                    <a
+                      href="gallery-cafe.html"
+                      class="inline-flex items-center gap-3 border border-gold/50 bg-transparent px-6 py-2 text-[0.65rem] uppercase tracking-[0.28em] text-gold transition-all duration-500 hover:bg-gold hover:text-ink"
+                      data-hover
+                    >
+                      Take a Look
+                      <svg width="14" height="10" viewBox="0 0 18 12" fill="none" stroke="currentColor">
+                        <path d="M0 6h16M12 1l5 5-5 5" />
+                      </svg>
+                    </a>
+                  </div>
+                  <p class="mx-auto mt-4 max-w-md font-light leading-relaxed text-paper/55 text-center">
+                    Signature café spaces designed for experience and ambiance.
+                  </p>
+                </div>
+                <div class="relative mt-6">
+                  <a
+                    href="gallery-cafe.html"
+                    class="group relative block overflow-hidden rounded-[5px]"
+                    aria-label="Open Our Cafe Project gallery"
+                    data-hover
+                  >
+                    <img
+                      src="https://res.cloudinary.com/ugxpywav/image/upload/v1786447683/Scene_4_trio_result.jpg"
+                      alt="Our Cafe Project"
+                      class="aspect-[4/3] w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                      decoding="async"
+                    />
+                    <div
+                      class="absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    >
+                      <span
+                        class="mb-6 ml-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
+                      >
+                        Open Gallery
+                        <svg
+                          width="18"
+                          height="12"
+                          viewBox="0 0 18 12"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <path d="M0 6h16M12 1l5 5-5 5" />
+                        </svg>
+                      </span>
+                    </div>
+                  </a>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============ DESIGN PHILOSOPHY ============ -->
+      <section id="philosophy" class="text-paper">
+        <div
+          class="mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-36"
+        >
+          <div class="text-center" data-reveal>
+            <p
+              class="mb-6 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold"
+            >
+              <span class="rule"></span> Design Philosophy
+              <span class="rule"></span>
+            </p>
+            <h2
+              class="phil-statement mx-auto max-w-5xl font-serif text-[clamp(2rem,5.5vw,4.8rem)] font-light leading-[1.12]"
+            >
+              "Architecture is the story we leave in stone —
+              <em class="italic text-gold-light"
+                >sketched by light, finished by time.</em
+              >"
+            </h2>
+          </div>
+
+          <!-- Principles -->
+         
+
+        <!-- Philosophy gallery -->
+        <div
+          class="mx-auto mt-28 max-w-[1600px] px-6 sm:px-10 lg:px-16"
+          data-reveal-group
+        >
+          <div class="columns-2 gap-6 lg:columns-3 lg:gap-8">
+            <div class="mb-6 break-inside-avoid lg:mb-8">
+              <img
+                src="https://res.cloudinary.com/ugxpywav/image/upload/v1786601352/IMG_20250114_133923.jpg_result.jpg"
+                alt="Design philosophy study 01"
+                loading="lazy"
+                decoding="async"
+                class="w-full object-cover"
+              />
+            </div>
+            <div class="mb-6 break-inside-avoid lg:mb-8">
+              <img
+                src="https://res.cloudinary.com/ugxpywav/image/upload/v1786601352/IMG_20250114_134146.jpg_result.jpg"
+                alt="Design philosophy study 02"
+                loading="lazy"
+                decoding="async"
+                class="w-full object-cover"
+              />
+            </div>
+            <div class="mb-6 break-inside-avoid lg:mb-8">
+              <img
+                src="https://res.cloudinary.com/ugxpywav/image/upload/v1786601353/IMG_5724.JPG_result.jpg"
+                alt="Design philosophy study 03"
+                loading="lazy"
+                decoding="async"
+                class="w-full object-cover"
+              />
+            </div>
+            <div class="mb-6 break-inside-avoid lg:mb-8">
+              <img
+                src="https://res.cloudinary.com/ugxpywav/image/upload/v1786601353/IMG_20250114_133857.jpg_result.jpg"
+                alt="Design philosophy study 04"
+                loading="lazy"
+                decoding="async"
+                class="w-full object-cover"
+              />
+            </div>
+            <div class="mb-6 break-inside-avoid lg:mb-8">
+              <img
+                src="https://res.cloudinary.com/ugxpywav/image/upload/v1786601352/IMG_20250114_134117.jpg_result.jpg"
+                alt="Design philosophy study 05"
+                loading="lazy"
+                decoding="async"
+                class="w-full object-cover"
+              />
+            </div>
+            <div class="mb-6 break-inside-avoid lg:mb-8">
+              <img
+                src="https://res.cloudinary.com/ugxpywav/image/upload/v1786601353/IMG_20250114_134232.jpg_result.jpg"
+                alt="Design philosophy study 06"
+                loading="lazy"
+                decoding="async"
+                class="w-full object-cover"
+              />
+            </div>
+            <div class="mb-6 break-inside-avoid lg:mb-8">
+              <img
+                src="https://res.cloudinary.com/ugxpywav/image/upload/v1786601353/ddd.jpg_result.jpg"
+                alt="Design philosophy study 07"
+                loading="lazy"
+                decoding="async"
+                class="w-full object-cover"
+              />
+            </div>
+            <div class="mb-6 break-inside-avoid lg:mb-8">
+              <img
+                src="https://res.cloudinary.com/ugxpywav/image/upload/v1786601353/IMG_20250114_134358.jpg_result.jpg"
+                alt="Design philosophy study 08"
+                loading="lazy"
+                decoding="async"
+                class="w-full object-cover"
+              />
+            </div>
+            <div class="mb-6 break-inside-avoid lg:mb-8">
+              <img
+                src="https://res.cloudinary.com/ugxpywav/image/upload/v1786601353/IMG_20250114_134219.jpg_result.jpg"
+                alt="Design philosophy study 09"
+                loading="lazy"
+                decoding="async"
+                class="w-full object-cover"
+              />
+            </div>
+            <div class="mb-6 break-inside-avoid lg:mb-8">
+              <img
+                src="https://res.cloudinary.com/ugxpywav/image/upload/v1786601353/IMG_20250114_134304.jpg_result.jpg"
+                alt="Design philosophy study 10"
+                loading="lazy"
+                decoding="async"
+                class="w-full object-cover"
+              />
+            </div>
+            <div class="mb-6 break-inside-avoid lg:mb-8">
+              <img
+                src="https://res.cloudinary.com/ugxpywav/image/upload/v1786601353/IMG_20250114_134250.jpg_result.jpg"
+                alt="Design philosophy study 11"
+                loading="lazy"
+                decoding="async"
+                class="w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SERVICES ============ -->
+      <section id="services" class="text-paper">
+        <div
+          class="mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-36"
+        >
+          <div
+            class="mb-16 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"
+            data-reveal
+          >
+            <div>
+              <p
+                class="mb-6 flex items-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold"
+              >
+                <span class="rule"></span> Capabilities
+              </p>
+              <h2
+                class="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] font-light leading-[1.08]"
+              >
+                What we <em class="italic text-gold-light">craft</em>
+              </h2>
+            </div>
+            <p class="max-w-sm font-light leading-relaxed text-paper/60">
+              A full-circle practice — from the first sketch of a masterplan to
+              the final thread of an interior. One studio, one vision, every
+              scale.
+            </p>
+          </div>
+
+          <div data-reveal-group>
+            <!-- 01 -->
+            <article class="svc group border-t border-white/10 py-9">
+              <div
+                class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div class="flex items-baseline gap-6">
+                  <span class="svc-num font-serif text-lg italic">01</span>
+                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                    Architectural Design
+                  </h3>
+                </div>
+                <p
+                  class="max-w-md pl-12 font-light leading-relaxed text-paper/60 sm:pl-0"
+                >
+                  Complete delivery of visionary buildings — concept, planning
+                  and construction documentation under one disciplined hand.
+                </p>
+                <svg
+                  class="svc-arrow shrink-0 text-gold"
+                  width="26"
+                  height="14"
+                  viewBox="0 0 26 14"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M0 7h24M19 1l5 6-5 6" />
+                </svg>
+              </div>
+            </article>
+            <!-- 02 -->
+            <article class="svc group border-t border-white/10 py-9">
+              <div
+                class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div class="flex items-baseline gap-6">
+                  <span class="svc-num font-serif text-lg italic">02</span>
+                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                    Interior Design
+                  </h3>
+                </div>
+                <p
+                  class="max-w-md pl-12 font-light leading-relaxed text-paper/60 sm:pl-0"
+                >
+                  Timeless interiors that blend fine materiality, custom
+                  furniture and effortless daily living.
+                </p>
+                <svg
+                  class="svc-arrow shrink-0 text-gold"
+                  width="26"
+                  height="14"
+                  viewBox="0 0 26 14"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M0 7h24M19 1l5 6-5 6" />
+                </svg>
+              </div>
+            </article>
+            <!-- 03 -->
+            <article class="svc group border-t border-white/10 py-9">
+              <div
+                class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div class="flex items-baseline gap-6">
+                  <span class="svc-num font-serif text-lg italic">03</span>
+                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                    3D Visualization
+                  </h3>
+                </div>
+                <p
+                  class="max-w-md pl-12 font-light leading-relaxed text-paper/60 sm:pl-0"
+                >
+                  Photorealistic imagery and cinematic films that bring unbuilt
+                  space to life with studio-grade light.
+                </p>
+                <svg
+                  class="svc-arrow shrink-0 text-gold"
+                  width="26"
+                  height="14"
+                  viewBox="0 0 26 14"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M0 7h24M19 1l5 6-5 6" />
+                </svg>
+              </div>
+            </article>
+            <!-- 04 -->
+            <article class="svc group border-t border-white/10 py-9">
+              <div
+                class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div class="flex items-baseline gap-6">
+                  <span class="svc-num font-serif text-lg italic">04</span>
+                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                    Urban Planning
+                  </h3>
+                </div>
+                <p
+                  class="max-w-md pl-12 font-light leading-relaxed text-paper/60 sm:pl-0"
+                >
+                  Masterplans and place-making strategies that shape cities able
+                  to breathe, move and connect.
+                </p>
+                <svg
+                  class="svc-arrow shrink-0 text-gold"
+                  width="26"
+                  height="14"
+                  viewBox="0 0 26 14"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M0 7h24M19 1l5 6-5 6" />
+                </svg>
+              </div>
+            </article>
+            <!-- 05 -->
+            <article class="svc group border-t border-b border-white/10 py-9">
+              <div
+                class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div class="flex items-baseline gap-6">
+                  <span class="svc-num font-serif text-lg italic">05</span>
+                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                    Sustainable Architecture
+                  </h3>
+                </div>
+                <p
+                  class="max-w-md pl-12 font-light leading-relaxed text-paper/60 sm:pl-0"
+                >
+                  Low-energy, low-impact design that honours both the site and
+                  the planet it will outlive.
+                </p>
+                <svg
+                  class="svc-arrow shrink-0 text-gold"
+                  width="26"
+                  height="14"
+                  viewBox="0 0 26 14"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M0 7h24M19 1l5 6-5 6" />
+                </svg>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROJECTS ============ -->
+      <section id="projects" class="text-paper">
+        <div
+          class="mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-36"
+        >
+          <div
+            class="mb-16 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"
+            data-reveal
+          >
+            <div>
+              <p
+                class="mb-6 flex items-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold"
+              >
+                <span class="rule"></span> Selected Works
+              </p>
+              <h2
+                class="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] font-light leading-[1.08]"
+              >
+                Signature <em class="italic text-gold-light">works</em>
+              </h2>
+            </div>
+            <p class="max-w-sm font-light leading-relaxed text-paper/60">
+              A selection of residences, towers and cultural spaces — each a
+              study in proportion, material honesty and light.
+            </p>
+          </div>
+
+          <div class="grid gap-10 md:grid-cols-2 lg:gap-14" data-reveal-group>
+            <!-- ► CUSTOMIZE: project images, names, locations & descriptions -->
+            <!-- 01 -->
+            <div class="pj group">
+              <div class="relative overflow-hidden">
+                <div
+                  class="pj-veil absolute inset-0 z-10 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent"
+                ></div>
+                <img
+                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787727183/K1.jpg.jpg"
+                  alt="K1 Project"
+                  class="aspect-[16/11] w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div
+                  class="pj-cap absolute bottom-0 left-0 z-20 p-7 text-paper sm:p-9"
+                >
+                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                    K1 Project
+                  </h3>
+                </div>
+                <span
+                  class="absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-paper/30 text-paper/80 transition-all duration-500 group-hover:bg-gold group-hover:text-ink group-hover:border-gold"
+                >
+                  <svg
+                    width="16"
+                    height="14"
+                    viewBox="0 0 26 14"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path d="M0 7h24M19 1l5 6-5 6" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="pj group">
+              <div class="relative overflow-hidden">
+                <div
+                  class="pj-veil absolute inset-0 z-10 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent"
+                ></div>
+                <img
+                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787727184/MASJID_THAARIQ.png"
+                  alt="Masjid Thaariq"
+                  class="aspect-[16/11] w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div
+                  class="pj-cap absolute bottom-0 left-0 z-20 p-7 text-paper sm:p-9"
+                >
+                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                    Masjid Thaariq
+                  </h3>
+                </div>
+                <span
+                  class="absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-paper/30 text-paper/80 transition-all duration-500 group-hover:bg-gold group-hover:text-ink group-hover:border-gold"
+                >
+                  <svg
+                    width="16"
+                    height="14"
+                    viewBox="0 0 26 14"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path d="M0 7h24M19 1l5 6-5 6" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="pj group">
+              <div class="relative overflow-hidden">
+                <div
+                  class="pj-veil absolute inset-0 z-10 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent"
+                ></div>
+                <img
+                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787727183/EV_-_A1.jpg.jpg"
+                  alt="EV A1 Project"
+                  class="aspect-[16/11] w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div
+                  class="pj-cap absolute bottom-0 left-0 z-20 p-7 text-paper sm:p-9"
+                >
+                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                    EV A1 Project
+                  </h3>
+                </div>
+                <span
+                  class="absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-paper/30 text-paper/80 transition-all duration-500 group-hover:bg-gold group-hover:text-ink group-hover:border-gold"
+                >
+                  <svg
+                    width="16"
+                    height="14"
+                    viewBox="0 0 26 14"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path d="M0 7h24M19 1l5 6-5 6" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- 04 -->
+            <div class="pj group">
+              <div class="relative overflow-hidden">
+                <div
+                  class="pj-veil absolute inset-0 z-10 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent"
+                ></div>
+                <img
+                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787727183/A2.jpg.jpg"
+                  alt="A2 Project"
+                  class="aspect-[16/11] w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div
+                  class="pj-cap absolute bottom-0 left-0 z-20 p-7 text-paper sm:p-9"
+                >
+                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                    A2 Project
+                  </h3>
+                </div>
+                <span
+                  class="absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-paper/30 text-paper/80 transition-all duration-500 group-hover:bg-gold group-hover:text-ink group-hover:border-gold"
+                >
+                  <svg
+                    width="16"
+                    height="14"
+                    viewBox="0 0 26 14"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path d="M0 7h24M19 1l5 6-5 6" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- 05 -->
+            <div class="pj group">
+              <div class="relative overflow-hidden">
+                <div
+                  class="pj-veil absolute inset-0 z-10 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent"
+                ></div>
+                <img
+                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787727183/IM_A1.jpg.jpg"
+                  alt="IM A1 Project"
+                  class="aspect-[16/11] w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div
+                  class="pj-cap absolute bottom-0 left-0 z-20 p-7 text-paper sm:p-9"
+                >
+                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                    IM A1 Project
+                  </h3>
+                </div>
+                <span
+                  class="absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-paper/30 text-paper/80 transition-all duration-500 group-hover:bg-gold group-hover:text-ink group-hover:border-gold"
+                >
+                  <svg
+                    width="16"
+                    height="14"
+                    viewBox="0 0 26 14"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path d="M0 7h24M19 1l5 6-5 6" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            <!-- 06 -->
+            <div class="pj group">
+              <div class="relative overflow-hidden">
+                <div
+                  class="pj-veil absolute inset-0 z-10 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent"
+                ></div>
+                <img
+                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787727190/SR_ARCADE.png"
+                  alt="SR Arcade"
+                  class="aspect-[16/11] w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div
+                  class="pj-cap absolute bottom-0 left-0 z-20 p-7 text-paper sm:p-9"
+                >
+                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                    SR Arcade
+                  </h3>
+                </div>
+                <span
+                  class="absolute right-6 top-6 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-paper/30 text-paper/80 transition-all duration-500 group-hover:bg-gold group-hover:text-ink group-hover:border-gold"
+                >
+                  <svg
+                    width="16"
+                    height="14"
+                    viewBox="0 0 26 14"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path d="M0 7h24M19 1l5 6-5 6" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CONCEPTUAL IMAGES ============ -->
+      <section class="text-paper">
+        <div
+          class="mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-36"
+        >
+          <div
+            class="mb-16 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"
+            data-reveal
+          >
+            <div>
+              <p
+                class="mb-6 flex items-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold"
+              >
+                <span class="rule"></span> Conceptual Images
+              </p>
+              <h2
+                class="font-serif text-[clamp(2.2rem,4.5vw,3.6rem)] font-light leading-[1.08]"
+              >
+                Conceptual <em class="italic text-gold-light">Images</em>
+              </h2>
+            </div>
+            <a
+              href="gallery-conceptual.html"
+              class="inline-flex items-center gap-3 border border-gold/50 bg-transparent px-8 py-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold transition-all duration-500 hover:bg-gold hover:text-ink"
+              data-hover
+            >
+              Take a Look
+              <svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor">
+                <path d="M0 6h16M12 1l5 5-5 5" />
+              </svg>
+            </a>
+          </div>
+
+          <a
+            href="gallery-conceptual.html"
+            class="group relative mx-auto block max-w-6xl overflow-hidden rounded-[5px]"
+            aria-label="Open Conceptual Images gallery"
+            data-hover
+          >
+            <div id="conceptualSlider" class="relative aspect-[4/3] w-full overflow-hidden rounded-[5px]">
+              <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721849/c6.jpg" alt="Conceptual 1" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+              <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721849/c4.jpg" alt="Conceptual 2" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+              <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721849/c1.jpg" alt="Conceptual 3" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+              <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721849/c2.jpg" alt="Conceptual 4" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+              <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721849/c5.jpg" alt="Conceptual 5" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+              <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721849/c3.jpg" alt="Conceptual 6" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+              <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721850/c10.jpg" alt="Conceptual 7" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+              <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721850/c7.jpg" alt="Conceptual 8" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+              <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721850/c8.jpg" alt="Conceptual 9" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+              <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721850/c9.jpg" alt="Conceptual 10" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+            </div>
+            <div
+              class="absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            >
+              <span
+                class="mb-6 ml-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
+              >
+                Open Gallery
+                <svg
+                  width="18"
+                  height="12"
+                  viewBox="0 0 18 12"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M0 6h16M12 1l5 5-5 5" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ============ REPRESENTING OUR TEAM ============ -->
+      <section class="relative text-paper overflow-hidden">
+        <!-- Creative dark overlay -->
+        <div class="absolute inset-0 pointer-events-none">
+          <div class="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-ink via-black/60 to-ink"></div>
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[600px] rounded-full border border-gold/[0.06] bg-gold/[0.03] blur-[80px]"></div>
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[450px] rounded-full border border-gold/[0.08] bg-gold/[0.02] blur-[60px]"></div>
+          <div class="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
+          <div class="absolute left-0 right-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
+        </div>
+        <div
+          class="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-36"
+        >
+          <div class="text-center" data-reveal>
+            <p
+              class="mb-6 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold"
+            >
+              <span class="rule"></span> Our Team
+              <span class="rule"></span>
+            </p>
+            <h2
+              class="font-serif text-[clamp(2.6rem,7vw,5.5rem)] font-light leading-tight"
+            >
+              <em class="italic text-gold-light">Representing</em> Our Team
+            </h2>
+          </div>
+
+          <div class="mt-16 grid grid-cols-1 justify-items-center gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-reveal-group>
+            <!-- Founder & Principal Architect -->
+            <div class="flex flex-col items-center">
+              <div
+                class="team-photo group relative block w-full max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)] transition-shadow duration-700"
+                data-hover
+              >
+                <img
+                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811198/PRINCIPAL_ARCHITECT.jpg"
+                  alt="Founder & Principal Architect"
+                  class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
+                ></div>
+                <span
+                  class="absolute bottom-6 left-0 right-0 text-center text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"
+                  >Founder &amp; Principal Architect</span
+                >
+              </div>
+              <p class="mt-8 font-serif text-2xl italic text-gold-light">
+                The Vision Behind FAIZ.ARCH
+              </p>
+            </div>
+
+            <!-- Project Manager -->
+            <div class="flex flex-col items-center">
+              <div
+                class="team-photo group relative block w-full max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)] transition-shadow duration-700"
+                data-hover
+              >
+                <img
+                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/PROJECT_MANAGER.png"
+                  alt="Project Manager"
+                  class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
+                ></div>
+                <span
+                  class="absolute bottom-6 left-0 right-0 text-center text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"
+                  >Project Manager</span
+                >
+              </div>
+              <p class="mt-8 font-serif text-2xl italic text-gold-light">
+                Driving Every Vision Forward
+              </p>
+            </div>
+
+            <!-- Contract Administrator -->
+            <div class="flex flex-col items-center">
+              <div
+                class="team-photo group relative block w-full max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)] transition-shadow duration-700"
+                data-hover
+              >
+                <img
+                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/CONTRACT_ADMINISTRATOR.jpg"
+                  alt="Contract Administrator"
+                  class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
+                ></div>
+                <span
+                  class="absolute bottom-6 left-0 right-0 text-center text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"
+                  >Contract Administrator</span
+                >
+              </div>
+              <p class="mt-8 font-serif text-2xl italic text-gold-light">
+                Ensuring Excellence in Every Detail
+              </p>
+            </div>
+
+            <!-- Design Coordinator & Software Executive -->
+            <div class="flex flex-col items-center">
+              <div
+                class="team-photo group relative block w-full max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)] transition-shadow duration-700"
+                data-hover
+              >
+                <img
+                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811203/SOFTWARE_COORDINATOR.jpg"
+                  alt="Design Coordinator & Software Executive"
+                  class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
+                ></div>
+                <span
+                  class="absolute bottom-6 left-0 right-0 text-center text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"
+                  >Design Coordinator &amp; Software Executive</span
+                >
+              </div>
+              <p class="mt-8 font-serif text-2xl italic text-gold-light">
+                Bridging Design and Technology
+              </p>
+            </div>
+
+            <!-- Software & Web Developer -->
+            <div class="flex flex-col items-center">
+              <div
+                class="team-photo group relative block w-full max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)] transition-shadow duration-700"
+                data-hover
+              >
+                <img
+                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/SOFTWARE_DEVELOPER.jpg"
+                  alt="Software & Web Developer"
+                  class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
+                ></div>
+                <span
+                  class="absolute bottom-6 left-0 right-0 text-center text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"
+                  >Software &amp; Web Developer</span
+                >
+              </div>
+              <p class="mt-8 font-serif text-2xl italic text-gold-light">
+                Crafting Digital Experiences
+              </p>
+            </div>
+
+            <!-- Architectural Photography & Digital Organizer -->
+            <div class="flex flex-col items-center">
+              <div
+                class="team-photo group relative block w-full max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)] transition-shadow duration-700"
+                data-hover
+              >
+                <img
+                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/ARCHITECTURAL_PHOTOGRAPHER.jpg"
+                  alt="Architectural Photography & Digital Organizer"
+                  class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
+                ></div>
+                <span
+                  class="absolute bottom-6 left-0 right-0 text-center text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"
+                  >Architectural Photography &amp; Digital Organizer</span
+                >
+              </div>
+              <p class="mt-8 font-serif text-2xl italic text-gold-light">
+                Capturing Spaces, Organizing Vision
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ COLLABORATORS ============ -->
+      <section class="text-paper">
+        <div
+          class="mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-32"
+        >
+          <div class="text-center" data-reveal>
+            <p
+              class="mb-6 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold"
+            >
+              <span class="rule"></span> Collaborators
+              <span class="rule"></span>
+            </p>
+            <h2
+              class="mx-auto max-w-4xl font-serif text-[clamp(2rem,5vw,4rem)] font-light leading-[1.12]"
+            >
+              Powering It Together
+              <em class="italic text-gold-light">(The Collaborators)</em>
+            </h2>
+            <a
+              href="https://www.webbyus.tech/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group mt-10 inline-flex items-center gap-3 border border-white/20 px-8 py-4 font-serif text-lg italic text-paper transition-colors hover:border-gold hover:text-gold-light"
+              data-hover
+            >
+              <img
+                src="WebByUs.jpeg"
+                alt="WebByUs"
+                class="h-8 w-8 rounded-lg object-cover ring-2 ring-white/20 transition-all group-hover:ring-gold"
+              />
+              www.webbyus.tech
+              <span class="gold-dot not-italic">✦</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ MARQUEE (light) ============ -->
+      <div class="marquee border-y border-white/10 py-6 text-paper/50">
+        <div class="marquee-track font-serif text-xl italic sm:text-2xl">
+          <div>
+            Timeless<span class="gold-dot not-italic">✦</span>Minimal<span
+              class="gold-dot not-italic"
+              >✦</span
+            >Sustainable<span class="gold-dot not-italic">✦</span>Bespoke<span
+              class="gold-dot not-italic"
+              >✦</span
+            >Iconic<span class="gold-dot not-italic">✦</span>
+          </div>
+          <div>
+            Timeless<span class="gold-dot not-italic">✦</span>Minimal<span
+              class="gold-dot not-italic"
+              >✦</span
+            >Sustainable<span class="gold-dot not-italic">✦</span>Bespoke<span
+              class="gold-dot not-italic"
+              >✦</span
+            >Iconic<span class="gold-dot not-italic">✦</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ CONTACT ============ -->
+      <section id="contact" class="text-paper">
+        <div
+          class="mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-36"
+        >
+          <div class="grid gap-16 lg:grid-cols-2 lg:gap-24">
+            <!-- Info -->
+            <div data-reveal>
+              <p
+                class="mb-6 flex items-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold"
+              >
+                <span class="rule"></span> Contact
+              </p>
+              <h2
+                class="font-serif text-[clamp(2.2rem,4.5vw,3.8rem)] font-light leading-[1.08]"
+              >
+                Let's create something<br /><em class="italic text-gold-light"
+                  >timeless.</em
+                >
+              </h2>
+              <p class="mt-8 max-w-md font-light leading-relaxed text-paper/70">
+                Tell us about your site, your vision, your timeline. We respond
+                to every inquiry personally — usually within two working days.
+              </p>
+
+              <!-- ► CUSTOMIZE: business information & social links -->
+              <div class="mt-12 space-y-8">
+                <a href="mailto:faizarchcreations@gmail.com" class="group block" data-hover>
+                  <p
+                    class="text-[0.64rem] uppercase tracking-[0.32em] text-paper/45"
+                  >
+                    Email
+                  </p>
+                  <p
+                    class="mt-1 font-serif text-2xl font-light text-paper transition-colors group-hover:text-gold-light"
+                  >
+                    faizarchcreations@gmail.com
+                  </p>
+                </a>
+                <a href="tel:+97140000000" class="group block" data-hover>
+                  <p
+                    class="text-[0.64rem] uppercase tracking-[0.32em] text-paper/45"
+                  >
+                    Phone
+                  </p>
+                  <p
+                    class="mt-1 font-serif text-2xl font-light text-paper transition-colors group-hover:text-gold-light"
+                  >
+                    +91 84385 07513
+                  </p>
+                </a>
+                <div>
+                  <p
+                    class="text-[0.64rem] uppercase tracking-[0.32em] text-paper/45"
+                  >
+                    Studio
+                  </p>
+                  <p class="mt-1 font-serif text-2xl font-light text-paper">
+                    FAIZ ARCHITECTURE <br />Coimbatore,TamilNadu, India
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-12 flex flex-wrap gap-3">
+                <a
+                  href="https://www.instagram.com/faiz_arch_?igsi=b2ZrcjhoNnhzdnIx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-hover
+                  class="inline-flex items-center gap-2 border border-white/15 px-6 py-3 text-[0.7rem] uppercase tracking-[0.24em] text-paper/75 transition-all duration-400 hover:border-gold hover:text-gold"
+                  ><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                  Instagram</a
+                >
+                <a
+                  href="https://wa.me/918438507513"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-hover
+                  class="inline-flex items-center gap-2 border border-white/15 px-6 py-3 text-[0.7rem] uppercase tracking-[0.24em] text-paper/75 transition-all duration-400 hover:border-gold hover:text-gold"
+                  ><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  WhatsApp</a
+                >
+                
+              </div>
+            </div>
+
+            <!-- Form -->
+            <div data-reveal>
+              <form
+                id="contactForm"
+                class="border border-white/10 bg-ink/45 p-8 shadow-[0_30px_80px_rgba(0,0,0,0.35)] backdrop-blur-md sm:p-12"
+                novalidate
+              >
+                <div class="grid gap-8 sm:grid-cols-2">
+                  <div>
+                    <label
+                      for="name"
+                      class="text-[0.64rem] uppercase tracking-[0.32em] text-paper/50"
+                      >Full name</label
+                    >
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      class="field"
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="email"
+                      class="text-[0.64rem] uppercase tracking-[0.32em] text-paper/50"
+                      >Email</label
+                    >
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      class="field"
+                      placeholder="you@studio.com"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="mt-8">
+                  <label
+                    for="type"
+                    class="text-[0.64rem] uppercase tracking-[0.32em] text-paper/50"
+                    >Project type</label
+                  >
+                  <select id="type" name="type" class="field">
+                    <option>Private Residence</option>
+                    <option>Commercial</option>
+                    <option>Interior Design</option>
+                    <option>Urban Planning</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="mt-8">
+                  <label
+                    for="message"
+                    class="text-[0.64rem] uppercase tracking-[0.32em] text-paper/50"
+                    >Project details</label
+                  >
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    class="field resize-none"
+                    placeholder="Location, vision, timeline…"
+                    required
+                  ></textarea>
+                </div>
+
+                <button
+                  type="button"
+                  id="formBtn"
+                  class="btn-gold mt-10 w-full justify-center sm:w-auto"
+                  data-hover
+                >
+                  Send Inquiry
+                  <svg
+                    width="18"
+                    height="12"
+                    viewBox="0 0 18 12"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path d="M0 6h16M12 1l5 5-5 5" />
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer
+      class="relative z-10 border-t border-white/10 bg-ink/60 text-paper backdrop-blur-sm"
+    >
+      <div class="mx-auto max-w-[1600px] px-6 pb-10 pt-20 sm:px-10 lg:px-16">
+        <div
+          class="flex flex-col justify-between gap-12 border-b border-white/10 pb-16 lg:flex-row lg:items-start"
+        >
+          <div>
+            <p class="font-serif text-4xl font-medium tracking-[0.12em]">
+              FAIZ<span class="gold-dot">.</span>ARCH
+            </p>
+            <p class="mt-4 max-w-xs font-light leading-relaxed text-paper/55">
+              A luxury architecture studio designing timeless, sustainable
+              spaces across the world.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-14 sm:grid-cols-3">
+            <div>
+              <p
+                class="mb-5 text-[0.64rem] uppercase tracking-[0.3em] text-paper/45"
+              >
+                Navigate
+              </p>
+              <ul class="space-y-3 text-sm font-light text-paper/70">
+                <li>
+                  <a href="#studio" class="transition-colors hover:text-gold"
+                    >Studio</a
+                  >
+                </li>
+                <li>
+                  <a href="#services" class="transition-colors hover:text-gold"
+                    >Services</a
+                  >
+                </li>
+                <li>
+                  <a href="#projects" class="transition-colors hover:text-gold"
+                    >Projects</a
+                  >
+                </li>
+                <li>
+                  <a href="#contact" class="transition-colors hover:text-gold"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p
+                class="mb-5 text-[0.64rem] uppercase tracking-[0.3em] text-paper/45"
+              >
+                Capabilities
+              </p>
+              <ul class="space-y-3 text-sm font-light text-paper/70">
+                <li>Architectural Design</li>
+                <li>Interior Design</li>
+                <li>3D Visualization</li>
+                <li>Urban Planning</li>
+              </ul>
+            </div>
+            <div>
+              <p
+                class="mb-5 text-[0.64rem] uppercase tracking-[0.3em] text-paper/45"
+              >
+                Follow
+              </p>
+              <ul class="space-y-3 text-sm font-light text-paper/70">
+                <li>
+                  <a href="https://www.instagram.com/faiz_arch_?igsi=b2ZrcjhoNnhzdnIx" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-gold"
+                    >Instagram</a
+                  >
+                </li>
+              
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col gap-4 pt-8 text-[0.66rem] uppercase tracking-[0.24em] text-paper/40 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p>
+            © <span id="year">2026</span> FAIZ.ARCH Studio. All rights reserved.
+          </p>
+          <p>Designed with intent · Built to endure</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ============ BACK TO TOP ============ -->
+    <button
+      id="toTop"
+      class="to-top fixed bottom-8 right-8 z-[60] flex h-12 w-12 items-center justify-center rounded-full border border-paper/25 text-paper/70 transition-all duration-500 hover:border-gold hover:text-gold"
+      aria-label="Back to top"
+      data-hover
+    >
+      <svg
+        width="16"
+        height="18"
+        viewBox="0 0 16 18"
+        fill="none"
+        stroke="currentColor"
+      >
+        <path d="M8 16V1M2 7l6-6 6 6" />
+      </svg>
+    </button>
+
+    <!-- ============ SCRIPTS ============ -->
+    <script>
+      /* ============================================================
+   FAIZ.ARCH — main application script
+   ============================================================ */
+      (function () {
+        "use strict";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        var reducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        var hasFinePointer = window.matchMedia("(pointer: fine)").matches;
+
+        /* ---------- Scroll progress + header state (shared callback) ---------- */
+        var progressBar = document.querySelector(".progress-bar");
+        var header = document.getElementById("header");
+        var toTop = document.getElementById("toTop");
+
+        function onScrollState(scroll, limit) {
+          progressBar.style.transform =
+            "scaleX(" + (limit ? scroll / limit : 0) + ")";
+          header.classList.toggle("scrolled", scroll > 40);
+          toTop.classList.toggle("show", scroll > 700);
+        }
+
+        /* ---------- Smooth scrolling (Lenis) ---------- */
+        var lenis = null;
+        if (!reducedMotion && window.Lenis) {
+          lenis = new Lenis({
+            duration: 1.15,
+            easing: function (t) {
+              return Math.min(1, 1.001 - Math.pow(2, -10 * t));
+            },
+          });
+          lenis.on("scroll", function (e) {
+            ScrollTrigger.update();
+            onScrollState(e.scroll, e.limit);
+          });
+          gsap.ticker.add(function (time) {
+            lenis.raf(time * 1000);
+          });
+          gsap.ticker.lagSmoothing(0);
+          lenis.stop();
+        }
+        window.addEventListener("scroll", function () {
+          if (!lenis)
+            onScrollState(
+              window.scrollY || window.pageYOffset,
+              document.documentElement.scrollHeight - window.innerHeight,
+            );
+        });
+
+        /* ---------- Anchor navigation through Lenis ---------- */
+        document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+          a.addEventListener("click", function (e) {
+            var id = a.getAttribute("href");
+            if (id.length < 2) return;
+            var target = document.querySelector(id);
+            if (!target) return;
+            e.preventDefault();
+            closeMenu();
+            if (lenis) {
+              lenis.scrollTo(target, { offset: -80, duration: 1.4 });
+            } else {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        });
+
+        /* ---------- Preloader ---------- */
+        var preloader = document.getElementById("preloader");
+        var countEl = document.querySelector(".pre-count");
+        var counter = { v: 0 };
+
+        var tl = gsap.timeline({
+          onComplete: function () {
+            preloader.style.display = "none";
+            if (lenis) lenis.start();
+            ScrollTrigger.refresh();
+            startHero();
+          },
+        });
+
+        tl.to(
+          counter,
+          {
+            v: 100,
+            duration: 1.5,
+            ease: "power2.inOut",
+            onUpdate: function () {
+              countEl.textContent = String(Math.round(counter.v)).padStart(
+                3,
+                "0",
+              );
+            },
+          },
+          0,
+        )
+          .to(
+            ".pre-brand span",
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              ease: "power3.out",
+              stagger: 0.055,
+            },
+            0.15,
+          )
+          .to(
+            ".pre-line i",
+            { scaleX: 1, duration: 1.5, ease: "power2.inOut" },
+            0,
+          )
+          .to(
+            ".pre-inner",
+            { opacity: 0, y: -40, duration: 0.5, ease: "power2.in" },
+            1.15,
+          )
+          .to(".pre-count", { opacity: 0, duration: 0.4 }, 1.15)
+          .to(
+            "#preloader",
+            { yPercent: -100, duration: 0.95, ease: "power4.inOut" },
+            1.5,
+          );
+
+        /* ---------- Hero entrance ---------- */
+        function startHero() {
+          gsap
+            .timeline()
+            .to(
+              ".hero-title .l",
+              {
+                yPercent: 0,
+                duration: 1.25,
+                ease: "power4.out",
+                stagger: 0.06,
+              },
+              0.05,
+            )
+            .fromTo(
+              ".hero-kicker",
+              { opacity: 0, y: 24 },
+              { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+              0.25,
+            )
+            .fromTo(
+              ".hero-tagline",
+              { opacity: 0, y: 26 },
+              { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+              0.85,
+            )
+            .fromTo(
+              ".hero-ctas",
+              { opacity: 0, y: 22 },
+              { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+              1.05,
+            )
+            .fromTo(
+              ".hero-scroll",
+              { opacity: 0 },
+              { opacity: 1, duration: 0.8 },
+              1.3,
+            );
+        }
+        document.querySelectorAll(".hero-title .l").forEach(function (el) {
+          el.style.transform = "translateY(120%)";
+        });
+
+        /* ---------- Menu overlay ---------- */
+        var menu = document.getElementById("menu");
+        var menuToggle = document.getElementById("menuToggle");
+        var menuOpen = false;
+
+        function openMenu() {
+          menuOpen = true;
+          menu.classList.add("open");
+          menuToggle.setAttribute("aria-expanded", "true");
+          menu.setAttribute("aria-hidden", "false");
+          if (lenis) lenis.stop();
+          gsap.to(menu, {
+            clipPath: "inset(0 0 0% 0)",
+            duration: 0.85,
+            ease: "power4.inOut",
+          });
+          gsap.fromTo(
+            ".menu-links li",
+            { y: 80, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.75,
+              stagger: 0.07,
+              delay: 0.25,
+              ease: "power3.out",
+            },
+          );
+        }
+        function closeMenu() {
+          if (!menuOpen) return;
+          menuOpen = false;
+          menuToggle.setAttribute("aria-expanded", "false");
+          menu.setAttribute("aria-hidden", "true");
+          if (lenis) lenis.start();
+          gsap.to(menu, {
+            clipPath: "inset(0 0 100% 0)",
+            duration: 0.7,
+            ease: "power4.inOut",
+            onComplete: function () {
+              menu.classList.remove("open");
+            },
+          });
+        }
+        menuToggle.addEventListener("click", function () {
+          menuOpen ? closeMenu() : openMenu();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") closeMenu();
+        });
+
+        /* ---------- Custom cursor ---------- */
+        if (hasFinePointer && !reducedMotion) {
+          document.documentElement.classList.add("has-cursor");
+          var dot = document.getElementById("cursorDot");
+          var ring = document.getElementById("cursorRing");
+          var mx = window.innerWidth / 2,
+            my = window.innerHeight / 2,
+            rx = mx,
+            ry = my;
+
+          window.addEventListener("mousemove", function (e) {
+            mx = e.clientX;
+            my = e.clientY;
+            dot.style.transform =
+              "translate(" + mx + "px," + my + "px) translate(-50%,-50%)";
+          });
+          gsap.ticker.add(function () {
+            rx += (mx - rx) * 0.16;
+            ry += (my - ry) * 0.16;
+            ring.style.transform =
+              "translate(" + rx + "px," + ry + "px) translate(-50%,-50%)";
+          });
+          document.addEventListener("mouseover", function (e) {
+            ring.classList.toggle(
+              "is-hover",
+              !!e.target.closest("a, button, [data-hover]"),
+            );
+          });
+        }
+
+        /* ---------- Reveal-on-scroll ---------- */
+        gsap.utils.toArray("[data-reveal]").forEach(function (el) {
+          gsap.fromTo(
+            el,
+            { y: 64, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1.1,
+              ease: "power3.out",
+              scrollTrigger: { trigger: el, start: "top 88%" },
+            },
+          );
+        });
+        gsap.utils.toArray("[data-reveal-group]").forEach(function (group) {
+          gsap.fromTo(
+            group.children,
+            { y: 56, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: "power3.out",
+              stagger: 0.12,
+              scrollTrigger: { trigger: group, start: "top 86%" },
+            },
+          );
+        });
+
+        /* ---------- Team photos spin on scroll ---------- */
+        (function () {
+          var teamSection = document.querySelectorAll('.team-photo');
+          if (!teamSection.length) return;
+          teamSection.forEach(function (card, i) {
+            var img = card.querySelector('img');
+            if (!img) return;
+            gsap.fromTo(img,
+              { rotation: 270, scale: 0.6, opacity: 0 },
+              {
+                rotation: 0,
+                scale: 1,
+                opacity: 1,
+                duration: 1.2,
+                ease: 'power3.out',
+                delay: i * 0.15,
+                scrollTrigger: { trigger: card, start: 'top 85%', once: true }
+              }
+            );
+          });
+        })();
+
+        /* ---------- Counters ---------- */
+        gsap.utils.toArray("[data-count]").forEach(function (el) {
+          if (el.closest(".hero-stats")) return;
+          var target = parseInt(el.getAttribute("data-count"), 10) || 0;
+          var obj = { v: 0 };
+          gsap.to(obj, {
+            v: target,
+            duration: 2,
+            ease: "power2.out",
+            scrollTrigger: { trigger: el, start: "top 90%", once: true },
+            onUpdate: function () {
+              el.textContent = Math.round(obj.v);
+            },
+          });
+        });
+
+        /* ---------- Hero running numbers ---------- */
+        (function () {
+          var els = document.querySelectorAll(".hero-stats [data-count]");
+          function run(el) {
+            if (el.dataset.done) return;
+            el.dataset.done = "1";
+            var target = parseInt(el.getAttribute("data-count"), 10) || 0;
+            var duration = 5000;
+            var startTime = null;
+            function step(ts) {
+              if (!startTime) startTime = ts;
+              var p = Math.min((ts - startTime) / duration, 1);
+              var eased = 1 - Math.pow(1 - p, 3);
+              el.textContent = String(Math.round(target * eased));
+              if (p < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+          }
+          function startAll() {
+            els.forEach(function (el) {
+              run(el);
+            });
+          }
+          if (document.readyState === "complete") {
+            startAll();
+          } else {
+            window.addEventListener("load", startAll);
+          }
+        })();
+
+        /* ---------- Parallax images ---------- */
+        gsap.utils.toArray("[data-parallax]").forEach(function (img) {
+          gsap.fromTo(
+            img,
+            { yPercent: -12 },
+            {
+              yPercent: 12,
+              ease: "none",
+              scrollTrigger: {
+                trigger: img.parentElement,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
+            },
+          );
+        });
+
+        /* ---------- Philosophy statement scrub ---------- */
+        gsap.to(".phil-statement", {
+          opacity: 0.15,
+          y: -40,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".phil-statement",
+            start: "top 80%",
+            end: "top 25%",
+            scrub: true,
+          },
+        });
+
+        /* ---------- Contact form → WhatsApp ---------- */
+        var form = document.getElementById("contactForm");
+        var formBtn = document.getElementById("formBtn");
+
+        formBtn.addEventListener("click", function () {
+          var name = document.getElementById("name").value.trim();
+          var email = document.getElementById("email").value.trim();
+          var type = document.getElementById("type").value;
+          var message = document.getElementById("message").value.trim();
+
+          if (!name || !email || !message) {
+            form.reportValidity();
+            return;
+          }
+
+          var text = "Hello FAIZ ARCH!%0A" +
+            "%0A*Name:* " + encodeURIComponent(name) +
+            "%0A*Email:* " + encodeURIComponent(email) +
+            "%0A*Project Type:* " + encodeURIComponent(type) +
+            "%0A*Details:* " + encodeURIComponent(message);
+
+          window.open("https://wa.me/918438507513?text=" + text, "_blank");
+        });
+
+        /* ---------- Back to top ---------- */
+        toTop.addEventListener("click", function () {
+          if (lenis) {
+            lenis.scrollTo(0, { duration: 1.6 });
+          } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        });
+
+        /* ---------- Footer year ---------- */
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        /* ---------- Conceptual Images slider ---------- */
+        (function () {
+          var slides = document.querySelectorAll('#conceptualSlider .cs-slide');
+          if (!slides.length) return;
+          var current = 0;
+          slides[0].style.opacity = '1';
+          setInterval(function () {
+            slides[current].style.opacity = '0';
+            current = (current + 1) % slides.length;
+            slides[current].style.opacity = '1';
+          }, 3000);
+        })();
+
+        /* ---------- Refresh after full load ---------- */
+        window.addEventListener("load", function () {
+          ScrollTrigger.refresh();
+        });
+      })();
+    </script>
+
+<!-- Philosophy Lightbox -->
+<div id="philLightbox" class="fixed inset-0 z-[90] flex items-center justify-center bg-ink/95 p-6" style="opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease" aria-hidden="true">
+  <button id="philLightboxClose" class="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 text-paper/75 transition-colors hover:border-gold hover:text-gold" aria-label="Close">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M1 1l14 14M15 1L1 15"/></svg>
+  </button>
+  <img id="philLightboxImg" src="" alt="Design philosophy photo" class="max-h-[85vh] max-w-full object-contain shadow-2xl" />
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('philLightbox');
+  var lbImg = document.getElementById('philLightboxImg');
+  var lbClose = document.getElementById('philLightboxClose');
+  var philImgs = document.querySelectorAll('#philosophy .columns-2 img');
+  philImgs.forEach(function(img){
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', function(){
+      lbImg.src = img.src;
+      lb.style.opacity = '1';
+      lb.style.visibility = 'visible';
+      lb.setAttribute('aria-hidden', 'false');
+    });
+  });
+  function closePhil(){ lb.style.opacity = '0'; lb.style.visibility = 'hidden'; lb.setAttribute('aria-hidden', 'true'); }
+  lbClose.addEventListener('click', closePhil);
+  lb.addEventListener('click', function(e){ if(e.target === lb) closePhil(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePhil(); });
+})();
+</script>
+  </body>
+</html>
