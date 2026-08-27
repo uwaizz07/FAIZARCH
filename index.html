@@ -2490,28 +2490,6 @@
           );
         });
 
-        /* ---------- Team photos spin on scroll ---------- */
-        (function () {
-          var teamSection = document.querySelectorAll('.team-photo');
-          if (!teamSection.length) return;
-          teamSection.forEach(function (card, i) {
-            var img = card.querySelector('img');
-            if (!img) return;
-            gsap.fromTo(img,
-              { rotation: 270, scale: 0.6, opacity: 0 },
-              {
-                rotation: 0,
-                scale: 1,
-                opacity: 1,
-                duration: 1.2,
-                ease: 'power3.out',
-                delay: i * 0.15,
-                scrollTrigger: { trigger: card, start: 'top 85%', once: true }
-              }
-            );
-          });
-        })();
-
         /* ---------- Counters ---------- */
         gsap.utils.toArray("[data-count]").forEach(function (el) {
           if (el.closest(".hero-stats")) return;
