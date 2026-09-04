@@ -64,8 +64,16 @@
 
 <!-- Fixed background video -->
 <div class="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
-  <video id="bgVideo" class="h-full w-full object-cover" muted loop playsinline src="Faiz%20Vedio.mp4"></video>
-  <script>setTimeout(function(){ document.getElementById('bgVideo').play(); }, 3000);</script>
+  <video id="bgVideo" class="h-full w-full object-cover" autoplay muted loop playsinline preload="auto" src="Faiz%20Vedio.mp4"></video>
+  <script>
+    (function(){
+      var v = document.getElementById('bgVideo');
+      var attempt = function(){ v.play().catch(function(){}); };
+      attempt();
+      document.addEventListener('visibilitychange', function(){ if(!document.hidden) attempt(); });
+      document.addEventListener('click', attempt, { once: true });
+    })();
+  </script>
   <div class="absolute inset-0 bg-ink/75"></div>
 </div>
 

@@ -116,52 +116,6 @@
         color: #c8a97e;
       }
 
-      /* ---------- Preloader ---------- */
-      #preloader {
-        position: fixed;
-        inset: 0;
-        z-index: 100;
-        background: #0a0a0a;
-        color: #f2eee7;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .pre-brand {
-        font-family: "Cormorant Garamond", serif;
-        text-align: center;
-      }
-      .pre-brand span {
-        display: inline-block;
-        font-size: clamp(2rem, 5.5vw, 3.6rem);
-        letter-spacing: 0.18em;
-        opacity: 0;
-        transform: translateY(34px);
-      }
-      .pre-line {
-        width: 240px;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.15);
-        margin: 30px auto 0;
-        overflow: hidden;
-      }
-      .pre-line i {
-        display: block;
-        height: 100%;
-        background: linear-gradient(90deg, #c8a97e, #e4d3b4);
-        transform: scaleX(0);
-        transform-origin: left;
-      }
-      .pre-count {
-        position: absolute;
-        right: 34px;
-        bottom: 30px;
-        font-family: Jost, sans-serif;
-        letter-spacing: 0.25em;
-        color: #a39c92;
-        font-size: 13px;
-      }
-
       /* ---------- Header / Nav ---------- */
       #header {
         border-bottom: 1px solid transparent;
@@ -469,18 +423,6 @@
     ></div>
 
     <!-- ============ PRELOADER ============ -->
-    <div id="preloader" aria-hidden="true">
-      <div class="pre-inner">
-        <div class="pre-brand">
-          <span>F</span><span>A</span><span>I</span><span>Z</span
-          ><span class="gold-dot">.</span><span>A</span><span>R</span
-          ><span>C</span><span>H</span>
-        </div>
-        <div class="pre-line"><i></i></div>
-      </div>
-      <div class="pre-count">000</div>
-    </div>
-
     <!-- ============ CUSTOM CURSOR ============ -->
     <div class="cursor-ring" id="cursorRing"></div>
     <div class="cursor-dot" id="cursorDot"></div>
@@ -496,13 +438,23 @@
       <video
         id="bgVideo"
         class="h-full w-full object-cover"
+        autoplay
         muted
         loop
         playsinline
+        preload="auto"
       >
         <source src="Faiz%20Vedio.mp4" type="video/mp4" />
       </video>
-      <script>setTimeout(function(){ document.getElementById('bgVideo').play(); }, 3000);</script>
+      <script>
+        (function(){
+          var v = document.getElementById('bgVideo');
+          var attempt = function(){ v.play().catch(function(){}); };
+          attempt();
+          document.addEventListener('visibilitychange', function(){ if(!document.hidden) attempt(); });
+          document.addEventListener('click', attempt, { once: true });
+        })();
+      </script>
 
       <!-- Readability overlays -->
       <div class="absolute inset-0 bg-ink/40"></div>
@@ -2280,62 +2232,10 @@
           });
         });
 
-        /* ---------- Preloader ---------- */
-        var preloader = document.getElementById("preloader");
-        var countEl = document.querySelector(".pre-count");
-        var counter = { v: 0 };
-
-        var tl = gsap.timeline({
-          onComplete: function () {
-            preloader.style.display = "none";
-            if (lenis) lenis.start();
-            ScrollTrigger.refresh();
-            startHero();
-          },
-        });
-
-        tl.to(
-          counter,
-          {
-            v: 100,
-            duration: 1.5,
-            ease: "power2.inOut",
-            onUpdate: function () {
-              countEl.textContent = String(Math.round(counter.v)).padStart(
-                3,
-                "0",
-              );
-            },
-          },
-          0,
-        )
-          .to(
-            ".pre-brand span",
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.7,
-              ease: "power3.out",
-              stagger: 0.055,
-            },
-            0.15,
-          )
-          .to(
-            ".pre-line i",
-            { scaleX: 1, duration: 1.5, ease: "power2.inOut" },
-            0,
-          )
-          .to(
-            ".pre-inner",
-            { opacity: 0, y: -40, duration: 0.5, ease: "power2.in" },
-            1.15,
-          )
-          .to(".pre-count", { opacity: 0, duration: 0.4 }, 1.15)
-          .to(
-            "#preloader",
-            { yPercent: -100, duration: 0.95, ease: "power4.inOut" },
-            1.5,
-          );
+        /* ---------- Preloader (removed) -> start directly ---------- */
+        if (lenis) lenis.start();
+        ScrollTrigger.refresh();
+        startHero();
 
         /* ---------- Hero entrance ---------- */
         function startHero() {
