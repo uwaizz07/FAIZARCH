@@ -308,6 +308,8 @@
         border-radius: 5px;
         display: block;
         cursor: pointer;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
       }
       .pj img {
         transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2503,6 +2505,7 @@
   var lbImg = document.getElementById('projLbImg');
   var lbCap = document.getElementById('projLbCaption');
   var idx = 0;
+  var openTs = 0;
   function show(i){
     idx = (i + items.length) % items.length;
     lbImg.src = items[idx].img.src;
@@ -2511,15 +2514,22 @@
     lb.style.opacity = '1';
     lb.style.visibility = 'visible';
     lb.setAttribute('aria-hidden', 'false');
+    openTs = Date.now();
   }
   function close(){ lb.style.opacity = '0'; lb.style.visibility = 'hidden'; lb.setAttribute('aria-hidden', 'true'); }
   cards.forEach(function(card, i){
     card.addEventListener('click', function(){ show(i); });
+    card.addEventListener('touchend', function(e){
+      if (e.cancelable) e.preventDefault();
+      show(i);
+    }, { passive: false });
   });
   document.getElementById('projLbClose').addEventListener('click', close);
-  document.getElementById('projLbPrev').addEventListener('click', function(){ show(idx - 1); });
-  document.getElementById('projLbNext').addEventListener('click', function(){ show(idx + 1); });
-  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.getElementById('projLbPrev').addEventListener('click', function(e){ e.stopPropagation(); show(idx - 1); });
+  document.getElementById('projLbNext').addEventListener('click', function(e){ e.stopPropagation(); show(idx + 1); });
+  lb.addEventListener('click', function(e){
+    if (e.target === lb && Date.now() - openTs > 350) close();
+  });
   document.addEventListener('keydown', function(e){
     if (lb.style.visibility === 'visible') {
       if (e.key === 'Escape') close();
