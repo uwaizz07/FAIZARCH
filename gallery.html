@@ -56,6 +56,8 @@
   .g-card figcaption { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
   .g-card:hover figcaption { opacity: 1; transform: translateY(0); }
 
+  #conceptGrid .g-card img { width: 100%; height: 320px; object-fit: cover; }
+
   /* Lightbox */
   #lightbox { opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s ease; }
   #lightbox.open { opacity: 1; visibility: visible; }
@@ -109,6 +111,18 @@
 
   <!-- Photo grid (rendered by JS below) -->
   <div id="galleryGrid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"></div>
+
+  <!-- Concept image section -->
+  <div class="mb-10 mt-24 text-center" data-reveal>
+    <p class="mb-5 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold">
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span> Concept Image
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span>
+    </p>
+    <h2 class="font-serif text-[clamp(2rem,4.5vw,3.4rem)] font-light leading-tight">
+      <em class="italic text-gold-light">Concept</em> image
+    </h2>
+  </div>
+  <div id="conceptGrid" class="grid grid-cols-1 gap-8"></div>
 
   <!-- Hall section -->
   <div class="mb-10 mt-24 text-center" data-reveal>
@@ -185,7 +199,8 @@
      add the filename below, then reload this page.
      ============================================================ */
 var PHOTOS = [
-  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440886/KTK_EV_RE-MODERND_FDS.jpg"
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440886/KTK_EV_RE-MODERND_FDS.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440887/process2.jpg"
   /* Examples to add your uploads:
   ,"gallery/photo-1.jpg"
   ,"gallery/photo-2.jpg"
@@ -223,14 +238,19 @@ var BATHROOM_PHOTOS = [
 
 /* ► CUSTOMIZE: work-on-going-process photos */
 var PROCESS_PHOTOS = [
-  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440889/process.jpg",
-  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440887/process2.jpg"
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440889/process.jpg"
+];
+
+/* ► CUSTOMIZE: concept image */
+var CONCEPT_PHOTOS = [
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789542152/WhatsApp_Image_2026-09-16_at_11.40.40_AM.jpg"
 ];
 
 /* Render grid + lightbox */
 (function () {
   'use strict';
   var grid = document.getElementById('galleryGrid');
+  var conceptGrid = document.getElementById('conceptGrid');
   var hallGrid = document.getElementById('hallGrid');
   var bedroomGrid = document.getElementById('bedroomGrid');
   var bathroomGrid = document.getElementById('bathroomGrid');
@@ -261,6 +281,7 @@ var PROCESS_PHOTOS = [
   }
 
   renderGrid(grid, PHOTOS, 'Ongoing project');
+  renderGrid(conceptGrid, CONCEPT_PHOTOS, 'Concept');
   renderGrid(hallGrid, HALL_PHOTOS, 'Hall');
   renderGrid(bedroomGrid, BEDROOM_PHOTOS, 'Bedroom');
   renderGrid(bathroomGrid, BATHROOM_PHOTOS, 'Bathroom');
@@ -280,9 +301,12 @@ var PROCESS_PHOTOS = [
       if (en.isIntersecting) { en.target.style.opacity = 1; en.target.style.transform = 'none'; io.unobserve(en.target); }
     });
   }, { threshold: 0.12 });
-  grid.querySelectorAll('[data-reveal]').forEach(function (el) {
-    el.style.opacity = 0; el.style.transform = 'translateY(30px)'; el.style.transition = 'opacity .9s ease, transform .9s ease';
-    io.observe(el);
+  var revealRoots = [grid, conceptGrid, hallGrid, bedroomGrid, bathroomGrid, processGrid];
+  revealRoots.forEach(function (g) {
+    g.querySelectorAll('[data-reveal]').forEach(function (el) {
+      el.style.opacity = 0; el.style.transform = 'translateY(30px)'; el.style.transition = 'opacity .9s ease, transform .9s ease';
+      io.observe(el);
+    });
   });
 
   document.getElementById('year').textContent = new Date().getFullYear();

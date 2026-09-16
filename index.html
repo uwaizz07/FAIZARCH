@@ -266,6 +266,23 @@
         opacity: 1;
       }
 
+      /* ---------- Hero CTA golden glow ---------- */
+      .hero-ctas .btn-gold,
+      .hero-ctas .link-underline {
+        animation: heroGlow 2.6s ease-in-out infinite;
+      }
+      @keyframes heroGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 12px rgba(200, 169, 126, 0.55),
+            0 0 30px rgba(200, 169, 126, 0.25);
+        }
+        50% {
+          box-shadow: 0 0 22px rgba(200, 169, 126, 0.9),
+            0 0 55px rgba(200, 169, 126, 0.45);
+        }
+      }
+
       /* ---------- Hero title letters ---------- */
       .ov {
         display: inline-block;
@@ -558,7 +575,7 @@
           <a href="mailto:faizarchcreations@gmail.com" class="hover:text-gold"
                                 >faizarchcreations@gmail.com</a
           >
-          <span>Dubai Design District · Dubai, UAE</span>
+          <span>Coimbatore District · TamilNadu, India</span>
         </div>
       </div>
     </div>
@@ -606,24 +623,20 @@
           <div
             class="relative z-20 flex h-full flex-col justify-center px-6 sm:px-10 lg:px-20"
           >
-          <img
-            src="LOGO.png"
-            alt="FAIZ.ARCH logo"
-            class="h-[120px] w-auto object-contain mt-0 mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]"
-          />
           <h1
             class="font-serif font-medium leading-[0.95] tracking-tight text-[clamp(3.4rem,13vw,10rem)]"
+            style="letter-spacing:0.16em"
           >
             <span class="whitespace-nowrap">
-              <span class="ov"><span class="inl l">F</span></span
-              ><span class="ov"><span class="inl l">A</span></span
-              ><span class="ov"><span class="inl l">I</span></span
-              ><span class="ov"><span class="inl l">Z</span></span
-              ><span class="ov"><span class="inl l text-outline">A</span></span
-              ><span class="ov"><span class="inl l text-outline">R</span></span
-              ><span class="ov"><span class="inl l text-outline">C</span></span
-              ><span class="ov"><span class="inl l text-outline">H</span></span
-              ><span class="ov"><span class="inl l">!</span></span>
+              <span class="ov"><span class="inl l" style="color:#000000">F</span></span
+              ><span class="ov"><span class="inl l" style="color:#000000">Λ</span></span
+              ><span class="ov"><span class="inl l" style="color:#000000">I</span></span
+              ><span class="ov"><span class="inl l" style="color:#000000">Z</span></span
+              ><span class="ov"><span class="inl l" style="color:#a06f34">Λ</span></span
+              ><span class="ov"><span class="inl l" style="color:#a06f34">R</span></span
+              ><span class="ov"><span class="inl l" style="color:#a06f34">C</span></span
+              ><span class="ov"><span class="inl l" style="color:#a06f34">H</span></span
+              ><span class="ov"><span class="inl l" style="color:#000000">!</span></span>
             </span>
           </h1>
 
@@ -645,8 +658,7 @@
           <p
             class="hero-tagline mt-10 max-w-md font-light leading-relaxed text-paper/80 sm:max-w-lg sm:text-lg"
           >
-            We design timeless spaces where light, form and nature converge —
-            architecture that speaks in silence and endures beyond trends.
+            We create thoughtful spaces where form, function, and design come together.
           </p>
 
           <div class="hero-ctas mt-12 flex flex-wrap items-center gap-6">
@@ -673,7 +685,7 @@
           class="hero-scroll absolute bottom-8 left-1/2 z-20 -translate-x-1/2 flex flex-col items-center gap-3"
         >
           <span class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
-            >Scroll</span
+            >Scroll Down</span
           >
           <span class="relative block h-14 w-px overflow-hidden bg-paper/20">
             <span
@@ -758,34 +770,54 @@
                     >
                       <span class="rule"></span> On Going Project
                     </p>
-                    <a
-                      href="gallery.html"
-                      class="inline-flex items-center gap-3 border border-gold/50 bg-transparent px-6 py-2 text-[0.65rem] uppercase tracking-[0.28em] text-gold transition-all duration-500 hover:bg-gold hover:text-ink"
-                      data-hover
-                    >
-                      Take a Look
-                      <svg width="14" height="10" viewBox="0 0 18 12" fill="none" stroke="currentColor">
-                        <path d="M0 6h16M12 1l5 5-5 5" />
-                      </svg>
-                    </a>
-                  </div>
+                    </div>
                   <a
                     href="gallery.html"
                     class="group relative block overflow-hidden rounded-[5px]"
                     aria-label="Open project gallery"
                     data-hover
                   >
-                    <img
-                      src="https://res.cloudinary.com/ugxpywav/image/upload/v1786440886/KTK_EV_RE-MODERND_FDS.jpg"
-                      alt="KTK project — residential design"
-                      class="aspect-[4/3] w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
-                      decoding="async"
-                    />
                     <div
-                      class="absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      class="relative aspect-[4/3] w-full overflow-hidden transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                      data-slider
+                    >
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786440886/KTK_EV_RE-MODERND_FDS.jpg"
+                        alt="KTK project — residential design"
+                        class="absolute inset-0 h-full w-full object-cover opacity-100 transition-opacity duration-1000"
+                        decoding="async"
+                        data-slide
+                      />
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786440884/bedroom1.jpg"
+                        alt="KTK project — bedroom"
+                        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
+                        decoding="async"
+                        loading="lazy"
+                        data-slide
+                      />
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786440885/hall1.jpg"
+                        alt="KTK project — hall"
+                        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
+                        decoding="async"
+                        loading="lazy"
+                        data-slide
+                      />
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786440883/bathroom1.jpg"
+                        alt="KTK project — bathroom"
+                        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
+                        decoding="async"
+                        loading="lazy"
+                        data-slide
+                      />
+                    </div>
+                    <div
+                      class="absolute inset-0 flex items-start justify-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-100"
                     >
                       <span
-                        class="mb-6 ml-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
+                        class="mt-6 mr-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
                       >
                         Open Gallery
                         <svg
@@ -826,34 +858,59 @@
                     >
                       <span class="rule"></span> On Going Project
                     </p>
-                    <a
-                      href="gallery-abbas.html"
-                      class="inline-flex items-center gap-3 border border-gold/50 bg-transparent px-6 py-2 text-[0.65rem] uppercase tracking-[0.28em] text-gold transition-all duration-500 hover:bg-gold hover:text-ink"
-                      data-hover
-                    >
-                      Take a Look
-                      <svg width="14" height="10" viewBox="0 0 18 12" fill="none" stroke="currentColor">
-                        <path d="M0 6h16M12 1l5 5-5 5" />
-                      </svg>
-                    </a>
-                  </div>
+                    </div>
                   <a
                     href="gallery-abbas.html"
                     class="group relative block overflow-hidden rounded-[5px]"
                     aria-label="Open Abbas project gallery"
                     data-hover
                   >
-                    <img
-                      src="https://res.cloudinary.com/ugxpywav/image/upload/v1786439118/cover.jpg"
-                      alt="Abbas project — residential design"
-                      class="aspect-[4/3] w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
-                      decoding="async"
-                    />
                     <div
-                      class="absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      class="relative aspect-[4/3] w-full overflow-hidden transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                      data-slider
+                    >
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786439118/cover.jpg"
+                        alt="Abbas project — residential design"
+                        class="absolute inset-0 h-full w-full object-cover opacity-100 transition-opacity duration-1000"
+                        decoding="async"
+                        data-slide
+                      />
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786439119/elevation.jpg"
+                        alt="Abbas project — elevation"
+                        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
+                        decoding="async"
+                        loading="lazy"
+                        data-slide
+                      />
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786439121/HALL_3_result.jpg"
+                        alt="Abbas project — hall"
+                        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
+                        decoding="async"
+                        loading="lazy"
+                        data-slide
+                      />
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786439119/KITCHEN_2_result.jpg"
+                        alt="Abbas project — kitchen"
+                        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
+                        decoding="async"
+                        loading="lazy"
+                        data-slide
+                      />
+                    </div>
+                    <span
+                      class="absolute left-6 top-6 z-10 font-serif text-[1.35rem] italic tracking-[0.08em] text-gold-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+                    >
+                      ABBAS RESIDENCE
+                    </span>
+                    <div
+                      class="absolute inset-0 flex items-start justify-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-100"
                     >
                       <span
-                        class="mb-6 ml-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
+                        class="mt-6 mr-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
                       >
                         Open Gallery
                         <svg
@@ -878,34 +935,59 @@
                     >
                       <span class="rule"></span> On Going Project
                     </p>
-                    <a
-                      href="gallery-ongoing.html"
-                      class="inline-flex items-center gap-3 border border-gold/50 bg-transparent px-6 py-2 text-[0.65rem] uppercase tracking-[0.28em] text-gold transition-all duration-500 hover:bg-gold hover:text-ink"
-                      data-hover
-                    >
-                      Take a Look
-                      <svg width="14" height="10" viewBox="0 0 18 12" fill="none" stroke="currentColor">
-                        <path d="M0 6h16M12 1l5 5-5 5" />
-                      </svg>
-                    </a>
-                  </div>
+                    </div>
                   <a
                     href="gallery-ongoing.html"
                     class="group relative block overflow-hidden rounded-[5px]"
                     aria-label="Open On Going Project gallery"
                     data-hover
                   >
-                    <img
-                      src="https://res.cloudinary.com/ugxpywav/image/upload/v1787717581/B5_result.jpg"
-                      alt="On Going Project"
-                      class="aspect-[4/3] w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
-                      decoding="async"
-                    />
                     <div
-                      class="absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      class="relative aspect-[4/3] w-full overflow-hidden transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                      data-slider
+                    >
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1787717581/B5_result.jpg"
+                        alt="On Going Project"
+                        class="absolute inset-0 h-full w-full object-cover opacity-100 transition-opacity duration-1000"
+                        decoding="async"
+                        data-slide
+                      />
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786702446/18.jpg_result.jpg"
+                        alt="On Going Project 2"
+                        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
+                        decoding="async"
+                        loading="lazy"
+                        data-slide
+                      />
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786702447/24.jpg_result.jpg"
+                        alt="On Going Project 3"
+                        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
+                        decoding="async"
+                        loading="lazy"
+                        data-slide
+                      />
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786702445/12.jpg_result.jpg"
+                        alt="On Going Project 4"
+                        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
+                        decoding="async"
+                        loading="lazy"
+                        data-slide
+                      />
+                    </div>
+                    <span
+                      class="absolute left-6 top-6 z-10 font-serif text-[1.35rem] italic tracking-[0.08em] text-gold-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+                    >
+                      SHAHUL RESIDENCE
+                    </span>
+                    <div
+                      class="absolute inset-0 flex items-start justify-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-100"
                     >
                       <span
-                        class="mb-6 ml-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
+                        class="mt-6 mr-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
                       >
                         Open Gallery
                         <svg
@@ -923,46 +1005,73 @@
                 </div>
 
                 <!-- ► Our Cafe Project -->
-                <div class="relative mt-28 mb-4" data-reveal>
-                  <div class="flex items-center justify-between">
+                <div
+                  class="relative mt-28 mb-4 rounded-[1.5rem] border border-gold/40 bg-gradient-to-b from-gold/15 via-transparent to-gold/10 p-6 shadow-[0_0_80px_rgba(200,169,126,0.35)] sm:p-10"
+                  data-reveal
+                >
+                  <span
+                    class="absolute -top-5 right-6 z-20 inline-flex items-center gap-2 border border-gold bg-gold px-5 py-2 text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-ink shadow-[0_0_30px_rgba(200,169,126,0.7)]"
+                  >
+                    ✔ Completed Project
+                  </span>
+                  <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
                     <h2
                       class="font-serif text-[clamp(2rem,5vw,3.8rem)] font-light leading-tight tracking-wide"
                     >
                       Our <em class="italic text-gold-light">Cafe</em> Project
                     </h2>
-                    <a
-                      href="gallery-cafe.html"
-                      class="inline-flex items-center gap-3 border border-gold/50 bg-transparent px-6 py-2 text-[0.65rem] uppercase tracking-[0.28em] text-gold transition-all duration-500 hover:bg-gold hover:text-ink"
-                      data-hover
-                    >
-                      Take a Look
-                      <svg width="14" height="10" viewBox="0 0 18 12" fill="none" stroke="currentColor">
-                        <path d="M0 6h16M12 1l5 5-5 5" />
-                      </svg>
-                    </a>
                   </div>
                   <p class="mx-auto mt-4 max-w-md font-light leading-relaxed text-paper/55 text-center">
                     Signature café spaces designed for experience and ambiance.
                   </p>
-                </div>
                 <div class="relative mt-6">
                   <a
                     href="gallery-cafe.html"
-                    class="group relative block overflow-hidden rounded-[5px]"
+                    class="group relative block overflow-hidden rounded-[5px] ring-1 ring-gold/50"
                     aria-label="Open Our Cafe Project gallery"
                     data-hover
                   >
-                    <img
-                      src="https://res.cloudinary.com/ugxpywav/image/upload/v1786447683/Scene_4_trio_result.jpg"
-                      alt="Our Cafe Project"
-                      class="aspect-[4/3] w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
-                      decoding="async"
-                    />
                     <div
-                      class="absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      class="relative aspect-[4/3] w-full overflow-hidden transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                      data-slider
+                    >
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786447683/Scene_4_trio_result.jpg"
+                        alt="Our Cafe Project"
+                        class="absolute inset-0 h-full w-full object-cover opacity-100 transition-opacity duration-1000"
+                        decoding="async"
+                        data-slide
+                      />
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786447683/IMG-20260714-WA0020.jpg_result.jpg"
+                        alt="Our Cafe Project 2"
+                        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
+                        decoding="async"
+                        loading="lazy"
+                        data-slide
+                      />
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1786447682/Scene_3_trio_result.jpg"
+                        alt="Our Cafe Project 3"
+                        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
+                        decoding="async"
+                        loading="lazy"
+                        data-slide
+                      />
+                      <img
+                        src="https://res.cloudinary.com/ugxpywav/image/upload/v1787720531/cafe2.jpg"
+                        alt="Our Cafe Project 4"
+                        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000"
+                        decoding="async"
+                        loading="lazy"
+                        data-slide
+                      />
+                    </div>
+                    <div
+                      class="absolute inset-0 flex items-start justify-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-100"
                     >
                       <span
-                        class="mb-6 ml-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
+                        class="mt-6 mr-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
                       >
                         Open Gallery
                         <svg
@@ -983,6 +1092,18 @@
             </div>
           </div>
 
+        </div>
+
+        <div class="mt-8 flex flex-col items-center gap-3">
+          <span
+            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            >Scroll Down</span
+          >
+          <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
+            <span
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+            ></span>
+          </span>
         </div>
       </section>
 
@@ -1118,6 +1239,18 @@
             </div>
           </div>
         </div>
+
+        <div class="mt-8 flex flex-col items-center gap-3">
+          <span
+            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            >Scroll Down</span
+          >
+          <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
+            <span
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+            ></span>
+          </span>
+        </div>
       </section>
 
       <!-- ============ SERVICES ============ -->
@@ -1179,7 +1312,7 @@
               </div>
             </article>
             <!-- 02 -->
-            <article class="svc group border-t border-white/10 py-9">
+            <article class="svc group border-t border-b border-white/10 py-9">
               <div
                 class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
               >
@@ -1207,94 +1340,19 @@
                 </svg>
               </div>
             </article>
-            <!-- 03 -->
-            <article class="svc group border-t border-white/10 py-9">
-              <div
-                class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
-              >
-                <div class="flex items-baseline gap-6">
-                  <span class="svc-num font-serif text-lg italic">03</span>
-                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
-                    3D Visualization
-                  </h3>
-                </div>
-                <p
-                  class="max-w-md pl-12 font-light leading-relaxed text-paper/60 sm:pl-0"
-                >
-                  Photorealistic imagery and cinematic films that bring unbuilt
-                  space to life with studio-grade light.
-                </p>
-                <svg
-                  class="svc-arrow shrink-0 text-gold"
-                  width="26"
-                  height="14"
-                  viewBox="0 0 26 14"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <path d="M0 7h24M19 1l5 6-5 6" />
-                </svg>
-              </div>
-            </article>
-            <!-- 04 -->
-            <article class="svc group border-t border-white/10 py-9">
-              <div
-                class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
-              >
-                <div class="flex items-baseline gap-6">
-                  <span class="svc-num font-serif text-lg italic">04</span>
-                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
-                    Urban Planning
-                  </h3>
-                </div>
-                <p
-                  class="max-w-md pl-12 font-light leading-relaxed text-paper/60 sm:pl-0"
-                >
-                  Masterplans and place-making strategies that shape cities able
-                  to breathe, move and connect.
-                </p>
-                <svg
-                  class="svc-arrow shrink-0 text-gold"
-                  width="26"
-                  height="14"
-                  viewBox="0 0 26 14"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <path d="M0 7h24M19 1l5 6-5 6" />
-                </svg>
-              </div>
-            </article>
-            <!-- 05 -->
-            <article class="svc group border-t border-b border-white/10 py-9">
-              <div
-                class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
-              >
-                <div class="flex items-baseline gap-6">
-                  <span class="svc-num font-serif text-lg italic">05</span>
-                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
-                    Sustainable Architecture
-                  </h3>
-                </div>
-                <p
-                  class="max-w-md pl-12 font-light leading-relaxed text-paper/60 sm:pl-0"
-                >
-                  Low-energy, low-impact design that honours both the site and
-                  the planet it will outlive.
-                </p>
-                <svg
-                  class="svc-arrow shrink-0 text-gold"
-                  width="26"
-                  height="14"
-                  viewBox="0 0 26 14"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <path d="M0 7h24M19 1l5 6-5 6" />
-                </svg>
-              </div>
-            </article>
           </div>
+        </div>
+
+        <div class="mt-8 flex flex-col items-center gap-3">
+          <span
+            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            >Scroll Down</span
+          >
+          <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
+            <span
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+            ></span>
+          </span>
         </div>
       </section>
 
@@ -1544,6 +1602,18 @@
             </div>
           </div>
         </div>
+
+        <div class="mt-8 flex flex-col items-center gap-3">
+          <span
+            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            >Scroll Down</span
+          >
+          <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
+            <span
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+            ></span>
+          </span>
+        </div>
       </section>
 
       <!-- ============ CONCEPTUAL IMAGES ============ -->
@@ -1567,16 +1637,6 @@
                 Conceptual <em class="italic text-gold-light">Images</em>
               </h2>
             </div>
-            <a
-              href="gallery-conceptual.html"
-              class="inline-flex items-center gap-3 border border-gold/50 bg-transparent px-8 py-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold transition-all duration-500 hover:bg-gold hover:text-ink"
-              data-hover
-            >
-              Take a Look
-              <svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor">
-                <path d="M0 6h16M12 1l5 5-5 5" />
-              </svg>
-            </a>
           </div>
 
           <a
@@ -1587,8 +1647,7 @@
           >
             <div id="conceptualSlider" class="relative aspect-[4/3] w-full overflow-hidden rounded-[5px]">
               <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721849/c6.jpg" alt="Conceptual 1" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
-              <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721849/c4.jpg" alt="Conceptual 2" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
-              <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721849/c1.jpg" alt="Conceptual 3" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+              <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1789541200/c4.jpg" alt="Conceptual 2" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
               <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721849/c2.jpg" alt="Conceptual 4" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
               <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721849/c5.jpg" alt="Conceptual 5" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
               <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721849/c3.jpg" alt="Conceptual 6" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
@@ -1598,10 +1657,10 @@
               <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787721850/c9.jpg" alt="Conceptual 10" class="cs-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
             </div>
             <div
-              class="absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              class="absolute inset-0 flex items-start justify-end bg-gradient-to-t from-ink/80 via-transparent to-transparent opacity-100"
             >
               <span
-                class="mb-6 ml-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
+                class="mt-6 mr-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.28em] text-gold-light"
               >
                 Open Gallery
                 <svg
@@ -1616,6 +1675,18 @@
               </span>
             </div>
           </a>
+        </div>
+
+        <div class="mt-8 flex flex-col items-center gap-3">
+          <span
+            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            >Scroll Down</span
+          >
+          <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
+            <span
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+            ></span>
+          </span>
         </div>
       </section>
 
@@ -1830,6 +1901,18 @@
             </div>
           </div>
         </div>
+
+        <div class="mt-8 flex flex-col items-center gap-3">
+          <span
+            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            >Scroll Down</span
+          >
+          <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
+            <span
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+            ></span>
+          </span>
+        </div>
       </section>
 
       <!-- ============ COLLABORATORS ============ -->
@@ -1866,6 +1949,18 @@
               <span class="gold-dot not-italic">✦</span>
             </a>
           </div>
+        </div>
+
+        <div class="mt-8 flex flex-col items-center gap-3">
+          <span
+            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            >Scroll Down</span
+          >
+          <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
+            <span
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+            ></span>
+          </span>
         </div>
       </section>
 
@@ -2068,6 +2163,18 @@
               </form>
             </div>
           </div>
+        </div>
+
+        <div class="mt-8 flex flex-col items-center gap-3">
+          <span
+            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            >Scroll Down</span
+          >
+          <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
+            <span
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+            ></span>
+          </span>
         </div>
       </section>
     </main>
@@ -2531,6 +2638,25 @@
             current = (current + 1) % slides.length;
             slides[current].style.opacity = '1';
           }, 3000);
+        })();
+
+        /* ---------- Front-page gallery sliders ---------- */
+        (function () {
+          var sliders = document.querySelectorAll('[data-slider]');
+          sliders.forEach(function (slider) {
+            var slides = slider.querySelectorAll('img[data-slide]');
+            if (!slides.length) return;
+            var current = 0;
+            slides[0].classList.remove('opacity-0');
+            slides[0].classList.add('opacity-100');
+            setInterval(function () {
+              slides[current].classList.remove('opacity-100');
+              slides[current].classList.add('opacity-0');
+              current = (current + 1) % slides.length;
+              slides[current].classList.remove('opacity-0');
+              slides[current].classList.add('opacity-100');
+            }, 3000);
+          });
         })();
 
         /* ---------- Refresh after full load ---------- */
