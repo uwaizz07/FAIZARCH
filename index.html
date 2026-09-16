@@ -12,7 +12,6 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0A'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-size='20' fill='%23C8A97E' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E"
     />
-
     <!-- ============================================================
      FAIZ.ARCH — SINGLE-FILE LUXURY ARCHITECTURE WEBSITE
      ------------------------------------------------------------
@@ -27,7 +26,6 @@
         4. ABOUT STORY     → copy, stats and signature
      ► Replace Tailwind Play CDN with a compiled build for production.
      ============================================================ -->
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,7 +33,6 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap"
       rel="stylesheet"
     />
-
     <!-- TailwindCSS (Play CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -61,12 +58,10 @@
         },
       };
     </script>
-
     <!-- 3D Engine, Animations, Smooth Scroll -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-
     <style>
       /* ---------- Base ---------- */
       html {
@@ -79,9 +74,7 @@
       content-visibility: auto;
       contain-intrinsic-size: 500px;
       }
-
-      .pj,
-      .team-photo {
+      .pj {
       content-visibility: auto;
       contain-intrinsic-size: 500px;
       }
@@ -92,7 +85,6 @@
         background: #c8a97e;
         color: #0a0a0a;
       }
-
       ::-webkit-scrollbar {
         width: 9px;
       }
@@ -106,7 +98,6 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #c8a97e;
       }
-
       /* Outlined serif for editorial moments */
       .text-outline {
         color: #ffffff;
@@ -115,7 +106,6 @@
       .gold-dot {
         color: #c8a97e;
       }
-
       /* ---------- Header / Nav ---------- */
       #header {
         border-bottom: 1px solid transparent;
@@ -150,7 +140,6 @@
         transform: scaleX(1);
         transform-origin: left;
       }
-
       /* ---------- Full-screen menu ---------- */
       #menu {
         position: fixed;
@@ -164,7 +153,6 @@
       }
       #menu.open {
         visibility: visible;
-        
         pointer-events: auto;
       }
       .menu-link {
@@ -177,7 +165,6 @@
         font-size: 0.8rem;
         letter-spacing: 0.2em;
       }
-
       /* ---------- Custom cursor ---------- */
       .cursor-dot,
       .cursor-ring {
@@ -217,7 +204,6 @@
           cursor: none;
         }
       }
-
       /* ---------- Buttons ---------- */
       .btn-gold {
         display: inline-flex;
@@ -265,7 +251,6 @@
       .link-underline:hover::after {
         opacity: 1;
       }
-
       /* ---------- Hero CTA golden glow ---------- */
       .hero-ctas .btn-gold,
       .hero-ctas .link-underline {
@@ -282,7 +267,6 @@
             0 0 55px rgba(200, 169, 126, 0.45);
         }
       }
-
       /* ---------- Hero title letters ---------- */
       .ov {
         display: inline-block;
@@ -293,7 +277,6 @@
         display: inline-block;
         will-change: transform;
       }
-
       /* ---------- Marquee ---------- */
       .marquee {
         overflow: hidden;
@@ -318,7 +301,6 @@
           transform: translateX(-50%);
         }
       }
-
       /* ---------- Project cards ---------- */
       .pj {
         position: relative;
@@ -350,7 +332,6 @@
       .pj:hover .pj-veil {
         opacity: 0.7;
       }
-
       /* ---------- Services rows ---------- */
       .svc {
         transition:
@@ -379,7 +360,6 @@
         opacity: 1;
         transform: translateX(0);
       }
-
       /* ---------- Form ---------- */
       .field {
         width: 100%;
@@ -405,7 +385,6 @@
         background: #16130e;
         color: #f2eee7;
       }
-
       /* ---------- Misc ---------- */
       .rule {
         display: inline-block;
@@ -429,22 +408,17 @@
         transform-origin: left;
         transform: scaleX(0);
       }
-
-      
     </style>
   </head>
-
   <body class="bg-ink text-paper font-sans antialiased">
     <!-- ============ SCROLL PROGRESS ============ -->
     <div
       class="progress-bar fixed top-0 left-0 z-[95] h-[2px] w-full bg-gradient-to-r from-gold-dark via-gold to-gold-light"
     ></div>
-
     <!-- ============ PRELOADER ============ -->
     <!-- ============ CUSTOM CURSOR ============ -->
     <div class="cursor-ring" id="cursorRing"></div>
     <div class="cursor-dot" id="cursorDot"></div>
-
     <!-- ============ GLOBAL BACKGROUND VIDEO ============
      ► CUSTOMIZE: this film plays fixed behind the ENTIRE page.
        It currently points to "faiz vedio.mp4" (next to this file).
@@ -473,7 +447,6 @@
           document.addEventListener('click', attempt, { once: true });
         })();
       </script>
-
       <!-- Readability overlays -->
       <div class="absolute inset-0 bg-ink/40"></div>
       <div
@@ -483,7 +456,6 @@
         class="absolute inset-0 bg-gradient-to-r from-ink/35 via-transparent to-ink/35"
       ></div>
     </div>
-
     <!-- ============ HEADER ============ -->
     <header id="header" class="fixed top-0 left-0 right-0 z-[70]">
       <div
@@ -512,7 +484,6 @@
             >Contact</a
           >
         </nav>
-
         <button
           id="menuToggle"
           class="group flex items-center gap-3 text-[0.72rem] uppercase tracking-[0.28em] text-paper/80 transition-colors hover:text-gold"
@@ -531,7 +502,6 @@
         </button>
       </div>
     </header>
-
     <!-- ============ FULL-SCREEN MENU ============ -->
     <div id="menu" aria-hidden="true">
       <div
@@ -575,11 +545,10 @@
           <a href="mailto:faizarchcreations@gmail.com" class="hover:text-gold"
                                 >faizarchcreations@gmail.com</a
           >
-          <span>Coimbatore District · TamilNadu, India</span>
+          <span>Coimbatore, Tamilnadu, India</span>
         </div>
       </div>
     </div>
-
     <main class="relative z-10">
       <!-- ============ HERO ============ -->
       <section
@@ -618,7 +587,6 @@
               </div>
             </div>
           </div>
-
           <!-- Hero content -->
           <div
             class="relative z-20 flex h-full flex-col justify-center px-6 sm:px-10 lg:px-20"
@@ -639,7 +607,6 @@
               ><span class="ov"><span class="inl l" style="color:#000000">!</span></span>
             </span>
           </h1>
-
           <p
             class="hero-tagline mt-8 max-w-2xl text-[0.72rem] uppercase tracking-[0.24em] leading-relaxed text-paper/85 sm:text-base"
           >
@@ -648,19 +615,16 @@
             <span class="gold-dot">|</span> Walkthrough
             <span class="gold-dot">|</span> Execution
           </p>
-
           <p
             class="mt-4 font-serif text-xl italic tracking-[0.3em] text-gold sm:text-2xl"
           >
             DESIGN.&nbsp; DETAIL.&nbsp; DELIVER.
           </p>
-
           <p
             class="hero-tagline mt-10 max-w-md font-light leading-relaxed text-paper/80 sm:max-w-lg sm:text-lg"
           >
             We create thoughtful spaces where form, function, and design come together.
           </p>
-
           <div class="hero-ctas mt-12 flex flex-wrap items-center gap-6">
             <a href="#projects" class="btn-gold" data-hover>
               Explore Projects
@@ -679,7 +643,6 @@
             >
           </div>
         </div>
-
         <!-- Scroll indicator -->
         <div
           class="hero-scroll absolute bottom-8 left-1/2 z-20 -translate-x-1/2 flex flex-col items-center gap-3"
@@ -694,7 +657,6 @@
           </span>
         </div>
       </section>
-
       <!-- ============ MARQUEE (dark) ============ -->
       <div class="marquee border-y border-white/10 py-6 text-paper/60">
         <div class="marquee-track font-serif text-xl italic sm:text-2xl">
@@ -716,7 +678,6 @@
           </div>
         </div>
       </div>
-
       <!-- ============ ABOUT / STUDIO ============ -->
       <section id="studio" class="text-paper">
         <div
@@ -756,7 +717,6 @@
                 Principal Architect
               </p>
             </div>
-
             <!-- Image + floating card -->
             <div class="lg:col-span-7">
               <div class="relative" data-reveal>
@@ -849,7 +809,6 @@
                   </div>
                   </div>
                 </div>
-
                 <!-- ► Abbas project cover -->
                 <div class="relative mt-20">
                   <div class="mb-4 flex items-center justify-between">
@@ -926,7 +885,6 @@
                     </div>
                   </a>
                 </div>
-
                 <!-- ► On Going Project cover -->
                 <div class="relative mt-20">
                   <div class="mb-4 flex items-center justify-between">
@@ -1003,7 +961,6 @@
                     </div>
                   </a>
                 </div>
-
                 <!-- ► Our Cafe Project -->
                 <div
                   class="relative mt-28 mb-4 rounded-[1.5rem] border border-gold/40 bg-gradient-to-b from-gold/15 via-transparent to-gold/10 p-6 shadow-[0_0_80px_rgba(200,169,126,0.35)] sm:p-10"
@@ -1091,9 +1048,7 @@
               </div>
             </div>
           </div>
-
         </div>
-
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
             class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
@@ -1106,7 +1061,6 @@
           </span>
         </div>
       </section>
-
       <!-- ============ DESIGN PHILOSOPHY ============ -->
       <section id="philosophy" class="text-paper">
         <div
@@ -1128,10 +1082,7 @@
               >"
             </h2>
           </div>
-
           <!-- Principles -->
-         
-
         <!-- Philosophy gallery -->
         <div
           class="mx-auto mt-28 max-w-[1600px] px-6 sm:px-10 lg:px-16"
@@ -1239,7 +1190,6 @@
             </div>
           </div>
         </div>
-
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
             class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
@@ -1252,7 +1202,6 @@
           </span>
         </div>
       </section>
-
       <!-- ============ SERVICES ============ -->
       <section id="services" class="text-paper">
         <div
@@ -1280,25 +1229,39 @@
               scale.
             </p>
           </div>
-
           <div data-reveal-group>
             <!-- 01 -->
             <article class="svc group border-t border-white/10 py-9">
               <div
                 class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
               >
-                <div class="flex items-baseline gap-6">
+                <div class="flex items-center gap-6">
                   <span class="svc-num font-serif text-lg italic">01</span>
-                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
-                    Architectural Design
-                  </h3>
+                  <div class="flex items-center gap-4">
+                    <span
+                      class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-gold/30 text-gold transition-colors duration-500 group-hover:border-gold"
+                    >
+                      <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 21h18" />
+                        <path d="M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14" />
+                        <path d="M2 21h20" />
+                        <path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2" />
+                      </svg>
+                    </span>
+                    <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                      Architectural Design
+                    </h3>
+                  </div>
                 </div>
-                <p
-                  class="max-w-md pl-12 font-light leading-relaxed text-paper/60 sm:pl-0"
-                >
-                  Complete delivery of visionary buildings — concept, planning
-                  and construction documentation under one disciplined hand.
-                </p>
                 <svg
                   class="svc-arrow shrink-0 text-gold"
                   width="26"
@@ -1316,18 +1279,32 @@
               <div
                 class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
               >
-                <div class="flex items-baseline gap-6">
+                <div class="flex items-center gap-6">
                   <span class="svc-num font-serif text-lg italic">02</span>
-                  <h3 class="font-serif text-3xl font-light sm:text-4xl">
-                    Interior Design
-                  </h3>
+                  <div class="flex items-center gap-4">
+                    <span
+                      class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-gold/30 text-gold transition-colors duration-500 group-hover:border-gold"
+                    >
+                      <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M6 11V7a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v4" />
+                        <path d="M4 12a2 2 0 0 1 2 2v1h12v-1a2 2 0 0 1 4 0v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2z" />
+                        <path d="M5 18v3M19 18v3" />
+                      </svg>
+                    </span>
+                    <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                      Interior Design
+                    </h3>
+                  </div>
                 </div>
-                <p
-                  class="max-w-md pl-12 font-light leading-relaxed text-paper/60 sm:pl-0"
-                >
-                  Timeless interiors that blend fine materiality, custom
-                  furniture and effortless daily living.
-                </p>
                 <svg
                   class="svc-arrow shrink-0 text-gold"
                   width="26"
@@ -1342,7 +1319,6 @@
             </article>
           </div>
         </div>
-
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
             class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
@@ -1355,7 +1331,6 @@
           </span>
         </div>
       </section>
-
       <!-- ============ PROJECTS ============ -->
       <section id="projects" class="text-paper">
         <div
@@ -1382,7 +1357,6 @@
               study in proportion, material honesty and light.
             </p>
           </div>
-
           <div class="grid gap-10 md:grid-cols-2 lg:gap-14" data-reveal-group>
             <!-- ► CUSTOMIZE: project images, names, locations & descriptions -->
             <!-- 01 -->
@@ -1420,7 +1394,6 @@
                 </span>
               </div>
             </div>
-
             <!-- 02 -->
             <div class="pj group">
               <div class="relative overflow-hidden">
@@ -1456,7 +1429,6 @@
                 </span>
               </div>
             </div>
-
             <!-- 03 -->
             <div class="pj group">
               <div class="relative overflow-hidden">
@@ -1492,7 +1464,6 @@
                 </span>
               </div>
             </div>
-
             <!-- 04 -->
             <div class="pj group">
               <div class="relative overflow-hidden">
@@ -1528,7 +1499,6 @@
                 </span>
               </div>
             </div>
-
             <!-- 05 -->
             <div class="pj group">
               <div class="relative overflow-hidden">
@@ -1564,7 +1534,6 @@
                 </span>
               </div>
             </div>
-
             <!-- 06 -->
             <div class="pj group">
               <div class="relative overflow-hidden">
@@ -1602,7 +1571,6 @@
             </div>
           </div>
         </div>
-
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
             class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
@@ -1615,7 +1583,6 @@
           </span>
         </div>
       </section>
-
       <!-- ============ CONCEPTUAL IMAGES ============ -->
       <section class="text-paper">
         <div
@@ -1638,7 +1605,6 @@
               </h2>
             </div>
           </div>
-
           <a
             href="gallery-conceptual.html"
             class="group relative mx-auto block max-w-6xl overflow-hidden rounded-[5px]"
@@ -1676,7 +1642,6 @@
             </div>
           </a>
         </div>
-
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
             class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
@@ -1689,232 +1654,57 @@
           </span>
         </div>
       </section>
-
       <!-- ============ REPRESENTING OUR TEAM ============ -->
       <section class="relative text-paper overflow-hidden">
-        <!-- Creative dark overlay -->
         <div class="absolute inset-0 pointer-events-none">
           <div class="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-ink via-black/60 to-ink"></div>
           <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[600px] rounded-full border border-gold/[0.06] bg-gold/[0.03] blur-[80px]"></div>
-          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[450px] rounded-full border border-gold/[0.08] bg-gold/[0.02] blur-[60px]"></div>
           <div class="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
           <div class="absolute left-0 right-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent"></div>
         </div>
-        <div
-          class="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-36"
-        >
-          <div class="text-center" data-reveal>
-            <p
-              class="mb-6 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold"
-            >
+        <div class="relative mx-auto max-w-[1400px] px-6 py-12 sm:px-10 lg:px-16" data-reveal>
+          <div class="text-center mb-6">
+            <p class="mb-3 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold">
               <span class="rule"></span> Our Team
               <span class="rule"></span>
             </p>
-            <h2
-              class="font-serif text-[clamp(2.6rem,7vw,5.5rem)] font-light leading-tight"
-            >
+            <h2 class="font-serif text-[clamp(2rem,5vw,3.6rem)] font-light leading-tight">
               <em class="italic text-gold-light">Representing</em> Our Team
             </h2>
           </div>
-
-          <div class="mt-16 grid grid-cols-1 justify-items-center gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-reveal-group>
-            <!-- Founder & Principal Architect -->
-            <div class="flex flex-col items-center">
-              <div
-                class="team-photo group relative block w-full max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)] transition-shadow duration-700"
-                data-hover
-              >
-                <img
-                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811198/PRINCIPAL_ARCHITECT.jpg"
-                  alt="Founder & Principal Architect"
-                  class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
-                ></div>
-                <span
-                  class="absolute bottom-6 left-0 right-0 text-center text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"
-                  >Founder &amp; Principal Architect</span
-                >
-              </div>
-              <p class="mt-8 font-serif text-2xl italic text-gold-light">
-                The Vision Behind FAIZ.ARCH
-              </p>
+          <div id="teamSlideshow" class="group relative mx-auto aspect-[16/10] max-w-3xl cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)]" role="button" aria-label="Open team gallery" tabindex="0">
+            <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811198/PRINCIPAL_ARCHITECT.jpg" alt="Founder & Principal Architect" class="team-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+            <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/PROJECT_MANAGER.png" alt="Project Manager" class="team-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+            <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/CONTRACT_ADMINISTRATOR.jpg" alt="Contract Administrator" class="team-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+            <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811203/SOFTWARE_COORDINATOR.jpg" alt="Design Coordinator & Software Executive" class="team-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+            <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/SOFTWARE_DEVELOPER.jpg" alt="Software & Web Developer" class="team-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+            <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/ARCHITECTURAL_PHOTOGRAPHER.jpg" alt="Architectural Photography & Digital Organizer" class="team-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+            <img src="https://res.cloudinary.com/ugxpywav/image/upload/v1787816091/SEO_specialist.jpg" alt="SEO Specialist & Strategist" class="team-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-0 right-0 text-center">
+              <span id="teamSlideLabel" class="text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"></span>
             </div>
-
-            <!-- Project Manager -->
-            <div class="flex flex-col items-center">
-              <div
-                class="team-photo group relative block w-full max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)] transition-shadow duration-700"
-                data-hover
-              >
-                <img
-                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/PROJECT_MANAGER.png"
-                  alt="Project Manager"
-                  class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
-                ></div>
-                <span
-                  class="absolute bottom-6 left-0 right-0 text-center text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"
-                  >Project Manager</span
-                >
-              </div>
-              <p class="mt-8 font-serif text-2xl italic text-gold-light">
-                Driving Every Vision Forward
-              </p>
+            <div class="absolute left-0 right-0 bottom-20 flex justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              <span class="inline-flex items-center gap-3 rounded-full border border-gold/40 bg-ink/60 px-5 py-2 text-[0.68rem] uppercase tracking-[0.28em] text-gold-light backdrop-blur-sm">
+                View All Team Photos
+                <svg width="14" height="10" viewBox="0 0 18 12" fill="none" stroke="currentColor"><path d="M0 6h16M12 1l5 5-5 5"/></svg>
+              </span>
             </div>
-
-            <!-- Contract Administrator -->
-            <div class="flex flex-col items-center">
-              <div
-                class="team-photo group relative block w-full max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)] transition-shadow duration-700"
-                data-hover
-              >
-                <img
-                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/CONTRACT_ADMINISTRATOR.jpg"
-                  alt="Contract Administrator"
-                  class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
-                ></div>
-                <span
-                  class="absolute bottom-6 left-0 right-0 text-center text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"
-                  >Contract Administrator</span
-                >
-              </div>
-              <p class="mt-8 font-serif text-2xl italic text-gold-light">
-                Ensuring Excellence in Every Detail
-              </p>
+            <div class="absolute top-1/2 left-4 -translate-y-1/2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-paper/30 text-paper/70 transition-colors hover:border-gold hover:text-gold" id="teamSlidePrev">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2L4 8l6 6"/></svg>
             </div>
-
-            <!-- Design Coordinator & Software Executive -->
-            <div class="flex flex-col items-center">
-              <div
-                class="team-photo group relative block w-full max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)] transition-shadow duration-700"
-                data-hover
-              >
-                <img
-                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811203/SOFTWARE_COORDINATOR.jpg"
-                  alt="Design Coordinator & Software Executive"
-                  class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
-                ></div>
-                <span
-                  class="absolute bottom-6 left-0 right-0 text-center text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"
-                  >Design Coordinator &amp; Software Executive</span
-                >
-              </div>
-              <p class="mt-8 font-serif text-2xl italic text-gold-light">
-                Bridging Design and Technology
-              </p>
-            </div>
-
-            <!-- Software & Web Developer -->
-            <div class="flex flex-col items-center">
-              <div
-                class="team-photo group relative block w-full max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)] transition-shadow duration-700"
-                data-hover
-              >
-                <img
-                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/SOFTWARE_DEVELOPER.jpg"
-                  alt="Software & Web Developer"
-                  class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
-                ></div>
-                <span
-                  class="absolute bottom-6 left-0 right-0 text-center text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"
-                  >Software &amp; Web Developer</span
-                >
-              </div>
-              <p class="mt-8 font-serif text-2xl italic text-gold-light">
-                Crafting Digital Experiences
-              </p>
-            </div>
-
-            <!-- Architectural Photography & Digital Organizer -->
-            <div class="flex flex-col items-center">
-              <div
-                class="team-photo group relative block w-full max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)] transition-shadow duration-700"
-                data-hover
-              >
-                <img
-                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/ARCHITECTURAL_PHOTOGRAPHER.jpg"
-                  alt="Architectural Photography & Digital Organizer"
-                  class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
-                ></div>
-                <span
-                  class="absolute bottom-6 left-0 right-0 text-center text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"
-                  >Architectural Photography &amp; Digital Organizer</span
-                >
-              </div>
-              <p class="mt-8 font-serif text-2xl italic text-gold-light">
-                Capturing Spaces, Organizing Vision
-              </p>
-            </div>
-
-            <!-- SEO Specialist & Strategist -->
-            <div class="flex flex-col items-center">
-              <div
-                class="team-photo group relative block w-full max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,1),0_0_60px_-10px_rgba(200,169,126,0.8)] transition-shadow duration-700"
-                data-hover
-              >
-                <img
-                  src="https://res.cloudinary.com/ugxpywav/image/upload/v1787816091/SEO_specialist.jpg"
-                  alt="SEO Specialist & Strategist"
-                  class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"
-                ></div>
-                <span
-                  class="absolute bottom-6 left-0 right-0 text-center text-[0.68rem] uppercase tracking-[0.35em] text-gold-light"
-                  >SEO Specialist &amp; Strategist</span
-                >
-              </div>
-              <p class="mt-8 font-serif text-2xl italic text-gold-light">
-                Growing Visibility, Expanding Reach
-              </p>
+            <div class="absolute top-1/2 right-4 -translate-y-1/2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-paper/30 text-paper/70 transition-colors hover:border-gold hover:text-gold" id="teamSlideNext">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2l6 6-6 6"/></svg>
             </div>
           </div>
         </div>
-
-        <div class="mt-8 flex flex-col items-center gap-3">
-          <span
-            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
-            >Scroll Down</span
-          >
+        <div class="mt-6 flex flex-col items-center gap-3">
+          <span class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50">Scroll Down</span>
           <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
-            <span
-              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
-            ></span>
+            <span class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"></span>
           </span>
         </div>
       </section>
-
       <!-- ============ COLLABORATORS ============ -->
       <section class="text-paper">
         <div
@@ -1933,11 +1723,12 @@
               Powering It Together
               <em class="italic text-gold-light">(The Collaborators)</em>
             </h2>
+            <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
             <a
               href="https://www.webbyus.tech/"
               target="_blank"
               rel="noopener noreferrer"
-              class="group mt-10 inline-flex items-center gap-3 border border-white/20 px-8 py-4 font-serif text-lg italic text-paper transition-colors hover:border-gold hover:text-gold-light"
+              class="group inline-flex items-center gap-3 border border-white/20 px-8 py-4 font-serif text-lg italic text-paper transition-colors hover:border-gold hover:text-gold-light"
               data-hover
             >
               <img
@@ -1948,9 +1739,39 @@
               www.webbyus.tech
               <span class="gold-dot not-italic">✦</span>
             </a>
+            <a
+              href="https://curtain-delta.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center gap-3 border border-white/20 px-8 py-4 font-serif text-lg italic text-paper transition-colors hover:border-gold hover:text-gold-light"
+              data-hover
+            >
+              <img
+                src="https://www.google.com/s2/favicons?domain=curtain-delta.vercel.app&sz=64"
+                alt="curtain-delta.vercel.app favicon"
+                class="h-8 w-8 rounded-lg object-cover ring-2 ring-white/20 transition-all group-hover:ring-gold"
+              />
+              curtain-delta.vercel.app
+              <span class="gold-dot not-italic">✦</span>
+            </a>
+            <a
+              href="https://perfectsign.online"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center gap-3 border border-white/20 px-8 py-4 font-serif text-lg italic text-paper transition-colors hover:border-gold hover:text-gold-light"
+              data-hover
+            >
+              <img
+                src="https://www.google.com/s2/favicons?domain=perfectsign.online&sz=64"
+                alt="perfectsign.online favicon"
+                class="h-8 w-8 rounded-lg object-cover ring-2 ring-white/20 transition-all group-hover:ring-gold"
+              />
+              perfectsign.online
+              <span class="gold-dot not-italic">✦</span>
+            </a>
+          </div>
           </div>
         </div>
-
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
             class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
@@ -1963,7 +1784,6 @@
           </span>
         </div>
       </section>
-
       <!-- ============ MARQUEE (light) ============ -->
       <div class="marquee border-y border-white/10 py-6 text-paper/50">
         <div class="marquee-track font-serif text-xl italic sm:text-2xl">
@@ -1987,7 +1807,6 @@
           </div>
         </div>
       </div>
-
       <!-- ============ CONTACT ============ -->
       <section id="contact" class="text-paper">
         <div
@@ -2012,7 +1831,6 @@
                 Tell us about your site, your vision, your timeline. We respond
                 to every inquiry personally — usually within two working days.
               </p>
-
               <!-- ► CUSTOMIZE: business information & social links -->
               <div class="mt-12 space-y-8">
                 <a href="mailto:faizarchcreations@gmail.com" class="group block" data-hover>
@@ -2027,7 +1845,7 @@
                     faizarchcreations@gmail.com
                   </p>
                 </a>
-                <a href="tel:+97140000000" class="group block" data-hover>
+                <a href="tel:+918438507513" class="group block" data-hover>
                   <p
                     class="text-[0.64rem] uppercase tracking-[0.32em] text-paper/45"
                   >
@@ -2046,11 +1864,10 @@
                     Studio
                   </p>
                   <p class="mt-1 font-serif text-2xl font-light text-paper">
-                    FAIZ ARCHITECTURE <br />Coimbatore,TamilNadu, India
+                    FAIZ ARCHITECTURE <br />Coimbatore, Tamilnadu, India
                   </p>
                 </div>
               </div>
-
               <div class="mt-12 flex flex-wrap gap-3">
                 <a
                   href="https://www.instagram.com/faiz_arch_?igsi=b2ZrcjhoNnhzdnIx"
@@ -2070,10 +1887,8 @@
                   ><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                   WhatsApp</a
                 >
-                
               </div>
             </div>
-
             <!-- Form -->
             <div data-reveal>
               <form
@@ -2142,7 +1957,6 @@
                     required
                   ></textarea>
                 </div>
-
                 <button
                   type="button"
                   id="formBtn"
@@ -2164,7 +1978,6 @@
             </div>
           </div>
         </div>
-
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
             class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
@@ -2178,7 +1991,6 @@
         </div>
       </section>
     </main>
-
     <!-- ============ FOOTER ============ -->
     <footer
       class="relative z-10 border-t border-white/10 bg-ink/60 text-paper backdrop-blur-sm"
@@ -2251,7 +2063,6 @@
                     >Instagram</a
                   >
                 </li>
-              
               </ul>
             </div>
           </div>
@@ -2266,7 +2077,6 @@
         </div>
       </div>
     </footer>
-
     <!-- ============ BACK TO TOP ============ -->
     <button
       id="toTop"
@@ -2284,7 +2094,6 @@
         <path d="M8 16V1M2 7l6-6 6 6" />
       </svg>
     </button>
-
     <!-- ============ SCRIPTS ============ -->
     <script>
       /* ============================================================
@@ -2292,26 +2101,21 @@
    ============================================================ */
       (function () {
         "use strict";
-
         gsap.registerPlugin(ScrollTrigger);
-
         var reducedMotion = window.matchMedia(
           "(prefers-reduced-motion: reduce)",
         ).matches;
         var hasFinePointer = window.matchMedia("(pointer: fine)").matches;
-
         /* ---------- Scroll progress + header state (shared callback) ---------- */
         var progressBar = document.querySelector(".progress-bar");
         var header = document.getElementById("header");
         var toTop = document.getElementById("toTop");
-
         function onScrollState(scroll, limit) {
           progressBar.style.transform =
             "scaleX(" + (limit ? scroll / limit : 0) + ")";
           header.classList.toggle("scrolled", scroll > 40);
           toTop.classList.toggle("show", scroll > 700);
         }
-
         /* ---------- Smooth scrolling (Lenis) ---------- */
         var lenis = null;
         if (false && !reducedMotion && window.Lenis) {
@@ -2338,7 +2142,6 @@
               document.documentElement.scrollHeight - window.innerHeight,
             );
         });
-
         /* ---------- Anchor navigation through Lenis ---------- */
         document.querySelectorAll('a[href^="#"]').forEach(function (a) {
           a.addEventListener("click", function (e) {
@@ -2355,12 +2158,10 @@
             }
           });
         });
-
         /* ---------- Preloader (removed) -> start directly ---------- */
         if (lenis) lenis.start();
         ScrollTrigger.refresh();
         startHero();
-
         /* ---------- Hero entrance ---------- */
         function startHero() {
           gsap
@@ -2403,12 +2204,10 @@
         document.querySelectorAll(".hero-title .l").forEach(function (el) {
           el.style.transform = "translateY(120%)";
         });
-
         /* ---------- Menu overlay ---------- */
         var menu = document.getElementById("menu");
         var menuToggle = document.getElementById("menuToggle");
         var menuOpen = false;
-
         function openMenu() {
           menuOpen = true;
           menu.classList.add("open");
@@ -2454,7 +2253,6 @@
         document.addEventListener("keydown", function (e) {
           if (e.key === "Escape") closeMenu();
         });
-
         /* ---------- Custom cursor ---------- */
         if (hasFinePointer && !reducedMotion) {
           document.documentElement.classList.add("has-cursor");
@@ -2464,7 +2262,6 @@
             my = window.innerHeight / 2,
             rx = mx,
             ry = my;
-
           window.addEventListener("mousemove", function (e) {
             mx = e.clientX;
             my = e.clientY;
@@ -2484,7 +2281,6 @@
             );
           });
         }
-
         /* ---------- Reveal-on-scroll ---------- */
         gsap.utils.toArray("[data-reveal]").forEach(function (el) {
           gsap.fromTo(
@@ -2513,7 +2309,6 @@
             },
           );
         });
-
         /* ---------- Counters ---------- */
         gsap.utils.toArray("[data-count]").forEach(function (el) {
           if (el.closest(".hero-stats")) return;
@@ -2529,7 +2324,6 @@
             },
           });
         });
-
         /* ---------- Hero running numbers ---------- */
         (function () {
           var els = document.querySelectorAll(".hero-stats [data-count]");
@@ -2559,7 +2353,6 @@
             window.addEventListener("load", startAll);
           }
         })();
-
         /* ---------- Parallax images ---------- */
         gsap.utils.toArray("[data-parallax]").forEach(function (img) {
           gsap.fromTo(
@@ -2577,7 +2370,6 @@
             },
           );
         });
-
         /* ---------- Philosophy statement scrub ---------- */
         gsap.to(".phil-statement", {
           opacity: 0.15,
@@ -2590,31 +2382,25 @@
             scrub: true,
           },
         });
-
         /* ---------- Contact form → WhatsApp ---------- */
         var form = document.getElementById("contactForm");
         var formBtn = document.getElementById("formBtn");
-
         formBtn.addEventListener("click", function () {
           var name = document.getElementById("name").value.trim();
           var email = document.getElementById("email").value.trim();
           var type = document.getElementById("type").value;
           var message = document.getElementById("message").value.trim();
-
           if (!name || !email || !message) {
             form.reportValidity();
             return;
           }
-
           var text = "Hello FAIZ ARCH!%0A" +
             "%0A*Name:* " + encodeURIComponent(name) +
             "%0A*Email:* " + encodeURIComponent(email) +
             "%0A*Project Type:* " + encodeURIComponent(type) +
             "%0A*Details:* " + encodeURIComponent(message);
-
           window.open("https://wa.me/918438507513?text=" + text, "_blank");
         });
-
         /* ---------- Back to top ---------- */
         toTop.addEventListener("click", function () {
           if (lenis) {
@@ -2623,10 +2409,8 @@
             window.scrollTo({ top: 0, behavior: "smooth" });
           }
         });
-
         /* ---------- Footer year ---------- */
         document.getElementById("year").textContent = new Date().getFullYear();
-
         /* ---------- Conceptual Images slider ---------- */
         (function () {
           var slides = document.querySelectorAll('#conceptualSlider .cs-slide');
@@ -2639,7 +2423,6 @@
             slides[current].style.opacity = '1';
           }, 3000);
         })();
-
         /* ---------- Front-page gallery sliders ---------- */
         (function () {
           var sliders = document.querySelectorAll('[data-slider]');
@@ -2658,14 +2441,12 @@
             }, 3000);
           });
         })();
-
         /* ---------- Refresh after full load ---------- */
         window.addEventListener("load", function () {
           ScrollTrigger.refresh();
         });
       })();
     </script>
-
 <!-- Philosophy Lightbox -->
 <div id="philLightbox" class="fixed inset-0 z-[90] flex items-center justify-center bg-ink/95 p-6" style="opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease" aria-hidden="true">
   <button id="philLightboxClose" class="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 text-paper/75 transition-colors hover:border-gold hover:text-gold" aria-label="Close">
@@ -2692,6 +2473,189 @@
   lbClose.addEventListener('click', closePhil);
   lb.addEventListener('click', function(e){ if(e.target === lb) closePhil(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePhil(); });
+})();
+</script>
+<!-- Team Gallery Overlay -->
+<div id="teamGallery" class="fixed inset-0 z-[90] flex items-center justify-center bg-ink/95 p-6" style="opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease" aria-hidden="true">
+  <button id="teamGalClose" class="absolute right-6 top-6 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 text-paper/75 transition-colors hover:border-gold hover:text-gold" aria-label="Close">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M1 1l14 14M15 1L1 15"/></svg>
+  </button>
+  <!-- Grid view: all team photos -->
+  <div id="teamGridWrap" class="max-h-[92vh] w-full max-w-[1200px] overflow-y-auto pr-1">
+    <div class="mb-8 text-center">
+      <p class="mb-3 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold">
+        <span class="rule"></span> Our Team <span class="rule"></span>
+      </p>
+      <h2 class="font-serif text-[clamp(1.8rem,4vw,3rem)] font-light leading-tight">
+        All Team <em class="italic text-gold-light">Members</em>
+      </h2>
+      <p class="mt-3 text-[0.7rem] uppercase tracking-[0.3em] text-paper/45">Click any photo to view it full screen</p>
+    </div>
+    <div id="teamFeatured" class="group relative mx-auto mb-8 max-w-md cursor-pointer overflow-hidden rounded-[5px] shadow-[0_0_80px_-10px_rgba(200,169,126,0.9)]"></div>
+    <div id="teamArchHeading" class="mb-6 mt-4 text-center">
+      <h3 class="font-serif text-[clamp(1.4rem,3.5vw,2.2rem)] font-light tracking-[0.18em] uppercase">
+        The <em class="italic text-gold-light">Architect</em> Team
+      </h3>
+    </div>
+    <div id="teamGalleryGrid" class="mx-auto grid max-w-[420px] grid-cols-2 gap-3 sm:gap-4"></div>
+    <div id="teamDevHeading" class="mb-6 mt-12 text-center">
+      <h3 class="font-serif text-[clamp(1.4rem,3.5vw,2.2rem)] font-light tracking-[0.18em] uppercase">
+        The <em class="italic text-gold-light">Developer</em> Team
+      </h3>
+    </div>
+    <div id="teamDevGrid" class="mx-auto grid max-w-[760px] grid-cols-4 gap-3 sm:gap-4"></div>
+  </div>
+  <!-- Detail view: single enlarged photo -->
+  <div id="teamWidgetView" class="hidden text-center" style="max-width:900px">
+    <button id="teamWidgetBack" class="mb-6 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.3em] text-paper/60 transition-colors hover:text-gold" aria-label="Back to all team photos">
+      <svg width="14" height="10" viewBox="0 0 18 12" fill="none" stroke="currentColor" class="rotate-180"><path d="M0 6h16M12 1l5 5-5 5"/></svg>
+      All Team Members
+    </button>
+    <img id="teamWidgetImg" src="" alt="" class="mx-auto max-h-[72vh] w-auto max-w-full object-contain shadow-2xl" />
+    <p id="teamWidgetCaption" class="mt-5 text-[0.7rem] uppercase tracking-[0.3em] text-gold-light"></p>
+    <div class="mt-6 flex items-center justify-center gap-4">
+      <button id="teamWidgetPrev" class="flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 text-paper/75 transition-colors hover:border-gold hover:text-gold" aria-label="Previous">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2L4 8l6 6"/></svg>
+      </button>
+      <button id="teamWidgetNext" class="flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 text-paper/75 transition-colors hover:border-gold hover:text-gold" aria-label="Next">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var teamData = [
+    { src: 'https://res.cloudinary.com/ugxpywav/image/upload/v1787811198/PRINCIPAL_ARCHITECT.jpg', alt: 'Founder & Principal Architect', role: 'Founder & Principal Architect' },
+    { src: 'https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/PROJECT_MANAGER.png', alt: 'Project Manager', role: 'Project Manager' },
+    { src: 'https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/CONTRACT_ADMINISTRATOR.jpg', alt: 'Contract Administrator', role: 'Contract Administrator' },
+    { src: 'https://res.cloudinary.com/ugxpywav/image/upload/v1787811203/SOFTWARE_COORDINATOR.jpg', alt: 'Design Coordinator & Software Executive', role: 'Design Coordinator & Software Executive' },
+    { src: 'https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/SOFTWARE_DEVELOPER.jpg', alt: 'Software & Web Developer', role: 'Software & Web Developer' },
+    { src: 'https://res.cloudinary.com/ugxpywav/image/upload/v1787811199/ARCHITECTURAL_PHOTOGRAPHER.jpg', alt: 'Architectural Photography & Digital Organizer', role: 'Architectural Photography & Digital Organizer' },
+    { src: 'https://res.cloudinary.com/ugxpywav/image/upload/v1787816091/SEO_specialist.jpg', alt: 'SEO Specialist & Strategist', role: 'SEO Specialist & Strategist' }
+  ];
+  /* ---------- Team Slideshow ---------- */
+  var slides = document.querySelectorAll('#teamSlideshow .team-slide');
+  var slideLabel = document.getElementById('teamSlideLabel');
+  var slideIdx = 0;
+  var slideTimer;
+  if (slides.length) {
+    slides[0].classList.remove('opacity-0');
+    slides[0].classList.add('opacity-100');
+    if (slideLabel) slideLabel.textContent = teamData[0].role;
+    function showSlide(i) {
+      slides[slideIdx].classList.remove('opacity-100');
+      slides[slideIdx].classList.add('opacity-0');
+      slideIdx = (i + slides.length) % slides.length;
+      slides[slideIdx].classList.remove('opacity-0');
+      slides[slideIdx].classList.add('opacity-100');
+      if (slideLabel) slideLabel.textContent = teamData[slideIdx].role;
+    }
+    function nextSlide() { showSlide(slideIdx + 1); }
+    function startAuto() { slideTimer = setInterval(nextSlide, 3000); }
+    function stopAuto() { clearInterval(slideTimer); }
+    startAuto();
+    var prevBtn = document.getElementById('teamSlidePrev');
+    var nextBtn = document.getElementById('teamSlideNext');
+    if (prevBtn) prevBtn.addEventListener('click', function(e){ e.stopPropagation(); stopAuto(); showSlide(slideIdx - 1); startAuto(); });
+    if (nextBtn) nextBtn.addEventListener('click', function(e){ e.stopPropagation(); stopAuto(); nextSlide(); startAuto(); });
+    /* ---------- Open gallery on slideshow click ---------- */
+    var slideshow = document.getElementById('teamSlideshow');
+    if (slideshow) {
+      slideshow.addEventListener('click', function () { openGallery(); });
+      slideshow.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openGallery(); }
+      });
+    }
+  }
+  /* ---------- Team Gallery Overlay ---------- */
+  var gal = document.getElementById('teamGallery');
+  var galGrid = document.getElementById('teamGalleryGrid');
+  var devGrid = document.getElementById('teamDevGrid');
+  var gridWrap = document.getElementById('teamGridWrap');
+  var widgetView = document.getElementById('teamWidgetView');
+  var widgetImg = document.getElementById('teamWidgetImg');
+  var widgetCaption = document.getElementById('teamWidgetCaption');
+  var widgetIdx = 0;
+  var galleryRendered = false;
+  function renderGallery() {
+    if (galleryRendered) return;
+    galleryRendered = true;
+    var featured = document.getElementById('teamFeatured');
+    var lead = teamData[0];
+    if (featured && lead) {
+      featured.innerHTML =
+        '<img src="' + lead.src + '" alt="' + lead.alt + '" loading="lazy" decoding="async" class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105">' +
+        '<div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent"></div>' +
+        '<div class="absolute bottom-0 left-0 right-0 p-8">' +
+          '<p class="mb-2 flex items-center gap-3 text-[0.6rem] uppercase tracking-[0.35em] text-gold">' +
+            '<span class="rule"></span> The Vision Behind FAIZ.ARCH' +
+          '</p>' +
+          '<h3 class="font-serif text-[clamp(1.6rem,4vw,2.4rem)] font-light leading-tight text-paper">' +
+            '<em class="italic text-gold-light">Principal</em> Architect' +
+          '</h3>' +
+        '</div>';
+      featured.addEventListener('click', function () { showWidget(0); });
+    }
+    function makeCard(m, i) {
+      var card = document.createElement('div');
+      card.className = 'group relative cursor-pointer overflow-hidden rounded-[5px]';
+      card.setAttribute('data-gallery-card', '');
+      card.innerHTML =
+        '<img src="' + m.src + '" alt="' + m.alt + '" loading="lazy" decoding="async" class="aspect-[3/4] w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105">' +
+        '<div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"></div>' +
+        '<span class="absolute bottom-2 left-0 right-0 text-center text-[0.52rem] uppercase tracking-[0.18em] text-gold-light">' + m.role + '</span>';
+      card.addEventListener('click', function () { showWidget(i); });
+      return card;
+    }
+    /* Architect team: Project Manager + Architectural Photography & Digital Organizer */
+    [1, 5].forEach(function (i) {
+      galGrid.appendChild(makeCard(teamData[i], i));
+    });
+    /* Developer team: Contract Administrator, Design Coordinator, Developer, SEO */
+    [2, 3, 4, 6].forEach(function (i) {
+      devGrid.appendChild(makeCard(teamData[i], i));
+    });
+  }
+  function openGallery() {
+    renderGallery();
+    gal.style.opacity = '1';
+    gal.style.visibility = 'visible';
+    gal.setAttribute('aria-hidden', 'false');
+    showGridView();
+  }
+  function closeGallery() {
+    gal.style.opacity = '0';
+    gal.style.visibility = 'hidden';
+    gal.setAttribute('aria-hidden', 'true');
+    showGridView();
+  }
+  function showGridView() {
+    widgetView.classList.add('hidden');
+    gridWrap.classList.remove('hidden');
+  }
+  function showWidget(i) {
+    widgetIdx = (i + teamData.length) % teamData.length;
+    widgetImg.src = teamData[widgetIdx].src;
+    widgetImg.alt = teamData[widgetIdx].alt;
+    widgetCaption.textContent = teamData[widgetIdx].role;
+    gridWrap.classList.add('hidden');
+    widgetView.classList.remove('hidden');
+  }
+  function widgetNav(dir) { showWidget(widgetIdx + dir); }
+  document.getElementById('teamGalClose').addEventListener('click', closeGallery);
+  document.getElementById('teamWidgetBack').addEventListener('click', showGridView);
+  document.getElementById('teamWidgetPrev').addEventListener('click', function(){ widgetNav(-1); });
+  document.getElementById('teamWidgetNext').addEventListener('click', function(){ widgetNav(1); });
+  gal.addEventListener('click', function(e){ if (e.target === gal) closeGallery(); });
+  document.addEventListener('keydown', function(e) {
+    if (gal.style.visibility === 'visible') {
+      if (e.key === 'Escape') closeGallery();
+      if (e.key === 'ArrowLeft' && !widgetView.classList.contains('hidden')) widgetNav(-1);
+      if (e.key === 'ArrowRight' && !widgetView.classList.contains('hidden')) widgetNav(1);
+      if (e.key === 'ArrowDown' && !widgetView.classList.contains('hidden')) showGridView();
+    }
+  });
 })();
 </script>
   </body>
