@@ -307,6 +307,7 @@
         overflow: hidden;
         border-radius: 5px;
         display: block;
+        cursor: pointer;
       }
       .pj img {
         transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1357,7 +1358,7 @@
               study in proportion, material honesty and light.
             </p>
           </div>
-          <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-14" data-reveal-group>
+          <div id="projectsWrap" class="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-14" data-reveal-group>
             <!-- ► CUSTOMIZE: project images, names, locations & descriptions -->
             <!-- 01 -->
             <div class="pj group">
@@ -2473,6 +2474,59 @@
   lbClose.addEventListener('click', closePhil);
   lb.addEventListener('click', function(e){ if(e.target === lb) closePhil(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePhil(); });
+})();
+</script>
+<!-- Signature Works Lightbox -->
+<div id="projLightbox" class="fixed inset-0 z-[90] flex items-center justify-center bg-ink/95 p-6" style="opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease" aria-hidden="true">
+  <button id="projLbClose" class="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 text-paper/75 transition-colors hover:border-gold hover:text-gold" aria-label="Close">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M1 1l14 14M15 1L1 15"/></svg>
+  </button>
+  <button id="projLbPrev" class="absolute left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 text-paper/75 transition-colors hover:border-gold hover:text-gold" aria-label="Previous">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2L4 8l6 6"/></svg>
+  </button>
+  <button id="projLbNext" class="absolute right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-paper/25 text-paper/75 transition-colors hover:border-gold hover:text-gold" aria-label="Next">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2l6 6-6 6"/></svg>
+  </button>
+  <div class="text-center">
+    <img id="projLbImg" src="" alt="Signature work photo" class="max-h-[78vh] w-auto max-w-full object-contain shadow-2xl" />
+    <p id="projLbCaption" class="mt-4 text-[0.7rem] uppercase tracking-[0.3em] text-gold-light"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var cards = document.querySelectorAll('#projectsWrap .pj');
+  if (!cards.length) return;
+  var items = Array.prototype.map.call(cards, function(card){
+    return { img: card.querySelector('img'), cap: card.querySelector('h3') };
+  });
+  var lb = document.getElementById('projLightbox');
+  var lbImg = document.getElementById('projLbImg');
+  var lbCap = document.getElementById('projLbCaption');
+  var idx = 0;
+  function show(i){
+    idx = (i + items.length) % items.length;
+    lbImg.src = items[idx].img.src;
+    lbImg.alt = items[idx].img.alt;
+    lbCap.textContent = items[idx].cap ? items[idx].cap.textContent : '';
+    lb.style.opacity = '1';
+    lb.style.visibility = 'visible';
+    lb.setAttribute('aria-hidden', 'false');
+  }
+  function close(){ lb.style.opacity = '0'; lb.style.visibility = 'hidden'; lb.setAttribute('aria-hidden', 'true'); }
+  cards.forEach(function(card, i){
+    card.addEventListener('click', function(){ show(i); });
+  });
+  document.getElementById('projLbClose').addEventListener('click', close);
+  document.getElementById('projLbPrev').addEventListener('click', function(){ show(idx - 1); });
+  document.getElementById('projLbNext').addEventListener('click', function(){ show(idx + 1); });
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if (lb.style.visibility === 'visible') {
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(idx - 1);
+      if (e.key === 'ArrowRight') show(idx + 1);
+    }
+  });
 })();
 </script>
 <!-- Team Gallery Overlay -->
