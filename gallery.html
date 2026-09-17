@@ -98,6 +98,17 @@
   </div>
   <!-- Photo grid (rendered by JS below) -->
   <div id="galleryGrid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"></div>
+  <!-- Duplex Elite Staircase section -->
+  <div class="mb-10 mt-24 text-center" data-reveal>
+    <p class="mb-5 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold">
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span> Duplex Elite Staircase
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span>
+    </p>
+    <h2 class="font-serif text-[clamp(2rem,4.5vw,3.4rem)] font-light leading-tight">
+      <em class="italic text-gold-light">Duplex</em> elite staircase
+    </h2>
+  </div>
+  <div id="staircaseGrid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"></div>
   <!-- Concept image section -->
   <div class="mb-10 mt-24 text-center" data-reveal>
     <p class="mb-5 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold">
@@ -142,17 +153,39 @@
     </h2>
   </div>
   <div id="bathroomGrid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"></div>
-  <!-- Work On Going Process section -->
+  <!-- Duplex Elite Bedroom 1 section -->
   <div class="mb-10 mt-24 text-center" data-reveal>
     <p class="mb-5 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold">
-      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span> Work On Going Process
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span> Duplex Elite Bedroom 1
       <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span>
     </p>
     <h2 class="font-serif text-[clamp(2rem,4.5vw,3.4rem)] font-light leading-tight">
-      <em class="italic text-gold-light">Work</em> on going process
+      <em class="italic text-gold-light">Duplex</em> elite bedroom 1
     </h2>
   </div>
-  <div id="processGrid" class="grid grid-cols-1 gap-8 sm:grid-cols-2"></div>
+  <div id="eliteBedroom1Grid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"></div>
+  <!-- Duplex Elite Bedroom 2 section -->
+  <div class="mb-10 mt-24 text-center" data-reveal>
+    <p class="mb-5 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold">
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span> Duplex Elite Bedroom 2
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span>
+    </p>
+    <h2 class="font-serif text-[clamp(2rem,4.5vw,3.4rem)] font-light leading-tight">
+      <em class="italic text-gold-light">Duplex</em> elite bedroom 2
+    </h2>
+  </div>
+  <div id="eliteBedroom2Grid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"></div>
+  <!-- Courtyard section -->
+  <div class="mb-10 mt-24 text-center" data-reveal>
+    <p class="mb-5 flex items-center justify-center gap-4 text-[0.68rem] uppercase tracking-[0.4em] text-gold">
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span> Courtyard
+      <span class="rule" style="display:inline-block;width:64px;height:1px;background:#C8A97E;vertical-align:middle"></span>
+    </p>
+    <h2 class="font-serif text-[clamp(2rem,4.5vw,3.4rem)] font-light leading-tight">
+      <em class="italic text-gold-light">Courtyard</em> views
+    </h2>
+  </div>
+  <div id="courtyardGrid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"></div>
   <!-- Empty-state note (shown only when PHOTOS is empty) -->
   <div id="galleryEmpty" class="hidden py-24 text-center">
     <p class="font-serif text-2xl font-light italic text-paper/60">Gallery is empty — add your photos</p>
@@ -178,6 +211,8 @@
      ============================================================ */
 var PHOTOS = [
   "https://res.cloudinary.com/ugxpywav/image/upload/v1786440886/KTK_EV_RE-MODERND_FDS.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440889/process.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789624843/KTK_-_2_result.jpg",
   "https://res.cloudinary.com/ugxpywav/image/upload/v1786440887/process2.jpg"
   /* Examples to add your uploads:
   ,"gallery/photo-1.jpg"
@@ -189,13 +224,8 @@ var PHOTOS = [
      To swap in others, replace the filenames below. */
 var BEDROOM_PHOTOS = [
   "https://res.cloudinary.com/ugxpywav/image/upload/v1786440884/bedroom1.jpg",
-  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440885/bedroom2.jpg",
-  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440885/bedroom3.jpg",
-  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440884/bedroom4.jpg",
-  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440885/bedroom5.jpg",
   "https://res.cloudinary.com/ugxpywav/image/upload/v1786440885/bedroom6.jpg",
-  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440885/bedroom7.jpg",
-  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440887/bedroom8.jpg"
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440885/bedroom7.jpg"
 ];
 /* ► CUSTOMIZE: hall photos */
 var HALL_PHOTOS = [
@@ -210,13 +240,38 @@ var BATHROOM_PHOTOS = [
   "https://res.cloudinary.com/ugxpywav/image/upload/v1786440884/bathroom3.jpg",
   "https://res.cloudinary.com/ugxpywav/image/upload/v1786440885/bathroom4.jpg"
 ];
-/* ► CUSTOMIZE: work-on-going-process photos */
-var PROCESS_PHOTOS = [
-  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440889/process.jpg"
-];
 /* ► CUSTOMIZE: concept image */
 var CONCEPT_PHOTOS = [
   "https://res.cloudinary.com/ugxpywav/image/upload/v1789542152/WhatsApp_Image_2026-09-16_at_11.40.40_AM.jpg"
+];
+/* ► CUSTOMIZE: duplex elite staircase photos */
+var STAIRCASE_PHOTOS = [
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789625088/WhatsApp_Image_2026-09-17_at_9.20.59_AM_result.jpg"
+];
+/* ► CUSTOMIZE: duplex elite bedroom 1 photos */
+var ELITE_BEDROOM1_PHOTOS = [
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789625562/IMG-20260604-WA0106_1.jpg_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789625848/IMG-20260604-WA0104.jpg_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789626019/IMG-20260604-WA0105.jpg_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789626112/IMG-20260604-WA0110.jpg_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440885/bedroom3.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440885/bedroom5.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789626370/IMG-20260604-WA0108.jpg_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789626512/IMG-20260604-WA0109.jpg_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789626511/IMG-20260604-WA0107.jpg_result.jpg"
+];
+/* ► CUSTOMIZE: courtyard photos */
+var COURTYARD_PHOTOS = [
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789625088/WhatsApp_Image_2026-09-17_at_9.21.24_AM_result.jpg"
+];
+/* ► CUSTOMIZE: duplex elite bedroom 2 photos */
+var ELITE_BEDROOM2_PHOTOS = [
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789626844/IMG-20260604-WA0122.jpg_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789626942/IMG-20260604-WA0117.jpg_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789627023/IMG-20260604-WA0119_1.jpg_result.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440887/bedroom8.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1786440885/bedroom2.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789627592/IMG-20260604-WA0123.jpg_result.jpg"
 ];
 /* Render grid + lightbox */
 (function () {
@@ -226,7 +281,10 @@ var CONCEPT_PHOTOS = [
   var hallGrid = document.getElementById('hallGrid');
   var bedroomGrid = document.getElementById('bedroomGrid');
   var bathroomGrid = document.getElementById('bathroomGrid');
-  var processGrid = document.getElementById('processGrid');
+  var staircaseGrid = document.getElementById('staircaseGrid');
+  var eliteBedroom1Grid = document.getElementById('eliteBedroom1Grid');
+  var eliteBedroom2Grid = document.getElementById('eliteBedroom2Grid');
+  var courtyardGrid = document.getElementById('courtyardGrid');
   var empty = document.getElementById('galleryEmpty');
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightboxImg');
@@ -250,11 +308,14 @@ var CONCEPT_PHOTOS = [
     });
   }
   renderGrid(grid, PHOTOS, 'Ongoing project');
+  renderGrid(staircaseGrid, STAIRCASE_PHOTOS, 'Duplex Elite Staircase');
   renderGrid(conceptGrid, CONCEPT_PHOTOS, 'Concept');
   renderGrid(hallGrid, HALL_PHOTOS, 'Hall');
   renderGrid(bedroomGrid, BEDROOM_PHOTOS, 'Bedroom');
   renderGrid(bathroomGrid, BATHROOM_PHOTOS, 'Bathroom');
-  renderGrid(processGrid, PROCESS_PHOTOS, 'Work on going process');
+  renderGrid(eliteBedroom1Grid, ELITE_BEDROOM1_PHOTOS, 'Duplex Elite Bedroom 1');
+  renderGrid(eliteBedroom2Grid, ELITE_BEDROOM2_PHOTOS, 'Duplex Elite Bedroom 2');
+  renderGrid(courtyardGrid, COURTYARD_PHOTOS, 'Courtyard');
   function closeBox() {
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
@@ -268,7 +329,7 @@ var CONCEPT_PHOTOS = [
       if (en.isIntersecting) { en.target.style.opacity = 1; en.target.style.transform = 'none'; io.unobserve(en.target); }
     });
   }, { threshold: 0.12 });
-  var revealRoots = [grid, conceptGrid, hallGrid, bedroomGrid, bathroomGrid, processGrid];
+  var revealRoots = [grid, staircaseGrid, conceptGrid, hallGrid, bedroomGrid, bathroomGrid, eliteBedroom1Grid, eliteBedroom2Grid, courtyardGrid];
   revealRoots.forEach(function (g) {
     g.querySelectorAll('[data-reveal]').forEach(function (el) {
       el.style.opacity = 0; el.style.transform = 'translateY(30px)'; el.style.transition = 'opacity .9s ease, transform .9s ease';
