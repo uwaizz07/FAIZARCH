@@ -69,7 +69,6 @@
 <!-- Header -->
 <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-ink/70 backdrop-blur-md">
   <div class="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-4 sm:px-10 lg:px-16">
-    <a href="index.html" class="flex items-center" aria-label="Back to FAIZ.ARCH home">
     <button type="button" onclick="history.back()" class="inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.28em] text-paper/75 transition-colors hover:text-gold" aria-label="Go back">
       <svg width="16" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" class="rotate-180"><path d="M0 6h16M12 1l5 5-5 5"/></svg>
       Back
@@ -158,6 +157,7 @@
      ============================================================ */
 var OVERVIEW_PHOTOS = [
   "https://res.cloudinary.com/ugxpywav/image/upload/v1786439118/cover.jpg",
+  "https://res.cloudinary.com/ugxpywav/image/upload/v1789729573/WhatsApp_Image_2026-09-18_at_1.30.31_PM_result.jpg",
   "https://res.cloudinary.com/ugxpywav/image/upload/v1786439119/elevation.jpg"
 ];
 var HALL_PHOTOS = [
@@ -193,13 +193,14 @@ var KITCHEN_PHOTOS = [
   var lightboxClose = document.getElementById('lightboxClose');
   var allPhotos = OVERVIEW_PHOTOS.concat(HALL_PHOTOS, BEDROOM_PHOTOS, KITCHEN_PHOTOS);
   if (!allPhotos.length) { empty.classList.remove('hidden'); return; }
-  function renderGrid(container, sources, label) {
+  function renderGrid(container, sources, label, imgClasses) {
     sources.forEach(function (src, i) {
       var fig = document.createElement('figure');
       fig.className = 'g-card group';
       fig.setAttribute('data-reveal', '');
+      var imgCls = (imgClasses && imgClasses[i]) || 'aspect-[4/3] w-full object-cover';
       fig.innerHTML =
-        '<img src="' + src + '" alt="' + label + ' photo ' + (i + 1) + '" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover">' +
+        '<img src="' + src + '" alt="' + label + ' photo ' + (i + 1) + '" loading="lazy" decoding="async" class="' + imgCls + '">' +
         '<div class="absolute inset-0 bg-ink/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>' +
         '<figcaption class="absolute bottom-4 left-4 text-[0.62rem] uppercase tracking-[0.3em] text-gold-light">View photo ' + (i + 1) + '</figcaption>';
       fig.addEventListener('click', function () {
@@ -210,7 +211,7 @@ var KITCHEN_PHOTOS = [
       container.appendChild(fig);
     });
   }
-  renderGrid(overviewGrid, OVERVIEW_PHOTOS, 'Overview');
+  renderGrid(overviewGrid, OVERVIEW_PHOTOS, 'Overview', [null, 'aspect-[4/3] w-full object-contain', null]);
   renderGrid(hallGrid, HALL_PHOTOS, 'Hall');
   renderGrid(bedroomGrid, BEDROOM_PHOTOS, 'Bedroom');
   renderGrid(kitchenGrid, KITCHEN_PHOTOS, 'Kitchen');
