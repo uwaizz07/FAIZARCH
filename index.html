@@ -103,8 +103,110 @@
         color: #ffffff;
         -webkit-text-stroke: 1.5px #c8a97e;
       }
+      .hero-glow-word {
+        -webkit-text-stroke: 1px #ffffff;
+        text-shadow:
+          0 0 6px rgba(255, 255, 255, 0.4),
+          0 0 16px rgba(255, 214, 128, 0.3),
+          0 0 32px rgba(255, 180, 64, 0.2);
+      }
       .gold-dot {
         color: #c8a97e;
+      }
+      .scroll-glow {
+        color: #ffe6b0;
+        text-shadow:
+          0 0 6px rgba(255, 214, 128, 0.9),
+          0 0 18px rgba(255, 196, 96, 0.85),
+          0 0 42px rgba(255, 180, 64, 0.6);
+      }
+      .scroll-line-glow {
+        background: #f3c86b;
+        box-shadow:
+          0 0 8px 2px rgba(255, 206, 110, 0.95),
+          0 0 24px 4px rgba(255, 180, 80, 0.7);
+      }
+      /* ---------- Preloader ---------- */
+      html.no-scroll,
+      html.no-scroll body {
+        overflow: hidden;
+        height: 100%;
+      }
+      .preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: #0a0a0a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          opacity 0.9s ease,
+          visibility 0.9s ease;
+      }
+      .preloader.hide {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .preloader-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.6rem;
+        padding: 2rem;
+      }
+      .preloader-logo {
+        height: 90px;
+        width: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 0 20px rgba(200, 169, 126, 0.5));
+      }
+      .preloader-title {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.7rem, 6vw, 3.2rem);
+        letter-spacing: 0.24em;
+        font-weight: 500;
+        color: #ffffff;
+        text-shadow:
+          0 0 16px rgba(255, 255, 255, 0.35),
+          0 0 44px rgba(200, 169, 126, 0.45);
+        -webkit-text-stroke: 1px #ffffff;
+      }
+      .preloader-ex {
+        color: #c8a97e;
+        -webkit-text-stroke: 1px #c8a97e;
+      }
+      .preloader-track {
+        width: min(360px, 68vw);
+        height: 1px;
+        background: rgba(255, 255, 255, 0.15);
+        overflow: hidden;
+      }
+      .preloader-bar {
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(to right, #a6782f, #f2e3c2);
+        transform-origin: left;
+        transform: scaleX(0);
+        box-shadow: 0 0 14px rgba(200, 169, 126, 0.85);
+      }
+      .preloader-meta {
+        width: min(360px, 68vw);
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+      }
+      .preloader-label {
+        font-size: 0.64rem;
+        letter-spacing: 0.32em;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .preloader-count {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.1rem;
+        color: #ffffff;
+        text-shadow: 0 0 12px rgba(200, 169, 126, 0.7);
       }
       /* ---------- Header / Nav ---------- */
       #header {
@@ -277,6 +379,25 @@
         display: inline-block;
         will-change: transform;
       }
+      .hero-glow-word .l {
+        position: relative;
+        background: linear-gradient(
+          to bottom,
+          #ffffff 0%,
+          #d9b980 8%,
+          #a6782f 24%,
+          #5e3208 42%,
+          #0d0602 58%,
+          #000000 68%,
+          #000000 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.9))
+          drop-shadow(0 6px 14px rgba(255, 214, 128, 0.18));
+      }
       /* ---------- Marquee ---------- */
       .marquee {
         overflow: hidden;
@@ -419,6 +540,20 @@
       class="progress-bar fixed top-0 left-0 z-[95] h-[2px] w-full bg-gradient-to-r from-gold-dark via-gold to-gold-light"
     ></div>
     <!-- ============ PRELOADER ============ -->
+    <div id="preloader" class="preloader" aria-hidden="true">
+      <div class="preloader-inner">
+        <h1 class="preloader-title">
+          FAIZ&nbsp;ARCH&nbsp;<span class="preloader-ex">!</span>
+        </h1>
+        <div class="preloader-track">
+          <div class="preloader-bar" id="preloaderBar"></div>
+        </div>
+        <div class="preloader-meta">
+          <span class="preloader-label">LOADING</span>
+          <span class="preloader-count" id="preloaderCount">0%</span>
+        </div>
+      </div>
+    </div>
     <!-- ============ CUSTOM CURSOR ============ -->
     <div class="cursor-ring" id="cursorRing"></div>
     <div class="cursor-dot" id="cursorDot"></div>
@@ -433,7 +568,6 @@
       <video
         id="bgVideo"
         class="h-full w-full object-cover"
-        autoplay
         muted
         loop
         playsinline
@@ -444,10 +578,13 @@
       <script>
         (function(){
           var v = document.getElementById('bgVideo');
+          if (!v) return;
           var attempt = function(){ v.play().catch(function(){}); };
-          attempt();
-          document.addEventListener('visibilitychange', function(){ if(!document.hidden) attempt(); });
-          document.addEventListener('click', attempt, { once: true });
+          window.__startBgVideo = function(){
+            attempt();
+            document.addEventListener('visibilitychange', function(){ if(!document.hidden) attempt(); });
+            document.addEventListener('click', attempt, { once: true });
+          };
         })();
       </script>
       <!-- Readability overlays -->
@@ -598,7 +735,7 @@
             class="font-serif font-medium leading-[0.95] tracking-tight text-[clamp(3.4rem,13vw,10rem)]"
             style="letter-spacing:0.16em"
           >
-            <span class="whitespace-nowrap">
+            <span class="whitespace-nowrap hero-glow-word">
               <span class="ov"><span class="inl l" style="color:#000000">F</span></span
               ><span class="ov"><span class="inl l" style="color:#000000">Λ</span></span
               ><span class="ov"><span class="inl l" style="color:#000000">I</span></span
@@ -611,12 +748,12 @@
             </span>
           </h1>
           <p
-            class="hero-tagline mt-8 max-w-2xl text-[0.72rem] uppercase tracking-[0.24em] leading-relaxed text-paper/85 sm:text-base"
+            class="hero-tagline mt-8 max-w-2xl whitespace-nowrap text-[0.72rem] uppercase tracking-[0.24em] leading-relaxed text-paper/85 sm:text-base"
           >
-            2D - 3D Plan <span class="gold-dot">|</span> Interior Design
-            <span class="gold-dot">|</span> Exterior
             <span class="gold-dot">|</span> Walkthrough
+            2D - 3D Plan <span class="gold-dot">|</span> Interior Design
             <span class="gold-dot">|</span> Execution
+            <span class="gold-dot">|</span> Exterior
           </p>
           <p
             class="mt-4 font-serif text-xl italic tracking-[0.3em] text-gold sm:text-2xl"
@@ -641,21 +778,21 @@
                 <path d="M0 6h16M12 1l5 5-5 5" />
               </svg>
             </a>
-            <a href="#contact" class="link-underline" data-hover
-              >Start a Project</a
-            >
+            <a href="#contact" class="btn-gold" data-hover>
+              Start a Project
+            </a>
           </div>
         </div>
         <!-- Scroll indicator -->
         <div
           class="hero-scroll absolute bottom-8 left-1/2 z-20 -translate-x-1/2 flex flex-col items-center gap-3"
         >
-          <span class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+          <span class="scroll-glow text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
             >Scroll Down</span
           >
           <span class="relative block h-14 w-px overflow-hidden bg-paper/20">
             <span
-              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold scroll-line-glow"
             ></span>
           </span>
         </div>
@@ -1054,12 +1191,12 @@
         </div>
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
-            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            class="scroll-glow text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
             >Scroll Down</span
           >
           <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
             <span
-              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold scroll-line-glow"
             ></span>
           </span>
         </div>
@@ -1195,12 +1332,12 @@
         </div>
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
-            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            class="scroll-glow text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
             >Scroll Down</span
           >
           <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
             <span
-              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold scroll-line-glow"
             ></span>
           </span>
         </div>
@@ -1320,16 +1457,57 @@
                 </svg>
               </div>
             </article>
+            <!-- 03 -->
+            <article class="svc group border-t border-b border-white/10 py-9">
+              <div
+                class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div class="flex items-center gap-6">
+                  <span class="svc-num font-serif text-lg italic">03</span>
+                  <div class="flex items-center gap-4">
+                    <span
+                      class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-gold/30 text-gold transition-colors duration-500 group-hover:border-gold"
+                    >
+                      <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                      </svg>
+                    </span>
+                    <h3 class="font-serif text-3xl font-light sm:text-4xl">
+                      Execution
+                    </h3>
+                  </div>
+                </div>
+                <svg
+                  class="svc-arrow shrink-0 text-gold"
+                  width="26"
+                  height="14"
+                  viewBox="0 0 26 14"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M0 7h24M19 1l5 6-5 6" />
+                </svg>
+              </div>
+            </article>
           </div>
         </div>
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
-            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            class="scroll-glow text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
             >Scroll Down</span
           >
           <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
             <span
-              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold scroll-line-glow"
             ></span>
           </span>
         </div>
@@ -1576,12 +1754,12 @@
         </div>
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
-            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            class="scroll-glow text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
             >Scroll Down</span
           >
           <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
             <span
-              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold scroll-line-glow"
             ></span>
           </span>
         </div>
@@ -1647,12 +1825,12 @@
         </div>
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
-            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            class="scroll-glow text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
             >Scroll Down</span
           >
           <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
             <span
-              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold scroll-line-glow"
             ></span>
           </span>
         </div>
@@ -1702,9 +1880,9 @@
           </div>
         </div>
         <div class="mt-6 flex flex-col items-center gap-3">
-          <span class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50">Scroll Down</span>
+          <span class="scroll-glow text-[0.62rem] uppercase tracking-[0.4em] text-paper/50">Scroll Down</span>
           <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
-            <span class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"></span>
+            <span class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold scroll-line-glow"></span>
           </span>
         </div>
       </section>
@@ -1777,12 +1955,12 @@
         </div>
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
-            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            class="scroll-glow text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
             >Scroll Down</span
           >
           <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
             <span
-              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold scroll-line-glow"
             ></span>
           </span>
         </div>
@@ -1983,12 +2161,12 @@
         </div>
         <div class="mt-8 flex flex-col items-center gap-3">
           <span
-            class="text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
+            class="scroll-glow text-[0.62rem] uppercase tracking-[0.4em] text-paper/50"
             >Scroll Down</span
           >
           <span class="relative block h-12 w-px overflow-hidden bg-paper/20">
             <span
-              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold"
+              class="absolute left-0 top-0 h-4 w-px animate-bounce bg-gold scroll-line-glow"
             ></span>
           </span>
         </div>
@@ -2161,10 +2339,33 @@
             }
           });
         });
-        /* ---------- Preloader (removed) -> start directly ---------- */
-        if (lenis) lenis.start();
-        ScrollTrigger.refresh();
-        startHero();
+        /* ---------- Preloader 0 -> 100 ---------- */
+        var preloader = document.getElementById("preloader");
+        var preloaderBar = document.getElementById("preloaderBar");
+        var preloaderCount = document.getElementById("preloaderCount");
+        document.documentElement.classList.add("no-scroll");
+        var preStart = null;
+        var PRE_DUR = 2000;
+        function preloaderFrame(ts) {
+          if (preStart === null) preStart = ts;
+          var p = Math.min((ts - preStart) / PRE_DUR, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          var val = Math.round(eased * 100);
+          if (preloaderCount) preloaderCount.textContent = val + "%";
+          if (preloaderBar) preloaderBar.style.transform = "scaleX(" + eased + ")";
+          if (p < 1) {
+            requestAnimationFrame(preloaderFrame);
+          } else {
+            startHero();
+            ScrollTrigger.refresh();
+            setTimeout(function () {
+              if (preloader) preloader.classList.add("hide");
+              document.documentElement.classList.remove("no-scroll");
+              if (window.__startBgVideo) window.__startBgVideo();
+            }, 400);
+          }
+        }
+        requestAnimationFrame(preloaderFrame);
         /* ---------- Hero entrance ---------- */
         function startHero() {
           gsap
